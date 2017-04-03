@@ -11,6 +11,9 @@ class BasicTests(unittest.TestCase):
     def test_sub(self):
         self.assertEqual(math_lib.sub(99, 99), 0)
 
+    def test_mul(self):
+        self.assertEqual(math_lib.mul(5,2), 10)
+
     def test_abs(self):
         self.assertEqual(math_lib.abs(-100), 100)
 
