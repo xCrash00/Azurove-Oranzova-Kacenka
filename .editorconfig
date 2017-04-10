@@ -4,4 +4,4 @@ root = true
 [*.py]
 end_of_line = crlf
 indent_style = tab
-indent_size = 1
+indent_size = 4
