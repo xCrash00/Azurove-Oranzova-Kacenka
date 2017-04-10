@@ -38,7 +38,7 @@ def fact(a):
         return num
 
 def pow(a, b=2):
-    if a ==0 and b == 0:
+	if a == 0 and b == 0:
         raise ValueError
     else:
         return float(a ** b)
