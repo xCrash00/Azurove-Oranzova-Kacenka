@@ -8,42 +8,36 @@ term = ""
 def num_pressed(num):
     global term
     term += str(num)
-    print(term)
     return 0
 
 
 def operator_pressed(operator):
     global term
     term += ' ' + operator + ' '
-    print(term)
     return 0
 
 
 def fact_pressed():
     global term
     term += ' !'
-    print(term)
     return 0
 
 
 def abs_pressed():
     global term
     term += ' abs'
-    print(term)
     return 0
 
 
 def sqrt_pressed():
     global term
     term += ' sqrt'
-    print(term)
     return 0
 
 
 def negate_pressed():
     global term
     term += '-'
-    print(term)
     return 0
 
 
@@ -67,14 +61,12 @@ def ce_pressed():
 def leftpar_pressed():
     global term
     term += '( '
-    print(term)
     return 0
 
 
 def rightpar_pressed():
     global term
     term += ' )'
-    print(term)
     return 0
 
 def parse():
@@ -87,6 +79,7 @@ def parse():
 def find_matching_par(src):
     istart = []  # stack of indices of opening parentheses
     d = {}
+    global term
     for i, c in enumerate(src):
         if c == '(':
             istart.append(i)
