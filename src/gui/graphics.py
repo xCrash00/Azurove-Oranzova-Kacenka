@@ -147,20 +147,20 @@ class Graphics(QWidget):
         self.btn8.clicked.connect(self.make_handleButton('8'))
         self.btn9.clicked.connect(self.make_handleButton('9'))
         self.btndot.clicked.connect(self.make_handleButton('.'))
+        self.btnneg.clicked.connect(self.make_handleButton('Neg'))
+        self.btnabs.clicked.connect(self.make_handleButton('Abs'))
         self.btnfact.clicked.connect(self.make_handleButton('Fact'))
-        self.btnce.clicked.connect(self.make_handleButton('Bck'))
         self.btnadd.clicked.connect(self.make_handleButton('+'))
         self.btnsub.clicked.connect(self.make_handleButton('-'))
         self.btnmul.clicked.connect(self.make_handleButton('*'))
         self.btndiv.clicked.connect(self.make_handleButton('/'))
+        self.btneq.clicked.connect(self.make_handleButton('='))
+        self.btnc.clicked.connect(self.make_handleButton('Cls'))
+        self.btnce.clicked.connect(self.make_handleButton('Bck'))
+        self.btnsqrt.clicked.connect(self.make_handleButton('Sqrt'))
         self.btnLbracket.clicked.connect(self.make_handleButton('('))
         self.btnRbracket.clicked.connect(self.make_handleButton(')'))
-        self.btnc.clicked.connect(self.make_handleButton('Cls'))
-        self.btnabs.clicked.connect(self.make_handleButton('Abs'))
-        self.btnsqrt.clicked.connect(self.make_handleButton('Sqrt'))
-        self.btnneg.clicked.connect(self.make_handleButton('Neg'))
-        self.btnpow.clicked.connect(self.make_handleButton(''))
-        self.btneq.clicked.connect(self.make_handleButton(''))
+        self.btnpow.clicked.connect(self.make_handleButton('Pow'))
 
         # pevná velikost okna
         self.setFixedSize(360, 330)
@@ -170,26 +170,32 @@ class Graphics(QWidget):
 
     def make_handleButton(self, name):
         def handleButton():
-            if name in ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '.']:
-                logic.num_pressed(name)
-            elif name == 'Neg':
-                logic.negate_pressed()
-            elif name == 'Abs':
-                logic.abs_pressed()
-            elif name == 'Fact':
-                logic.fact_pressed()
-            elif name in ['+', '-', '*', '/']:
-                logic.operator_pressed(name)
-            elif name == '=':
-                logic.get_res()
-            elif name == 'Cls':
-                logic.c_pressed()
-            elif name == 'Bck':
-                logic.ce_pressed()
-            elif name == 'Sqrt':
-                logic.sqrt_pressed()
             self.equation.setText(logic.term)
 
+        if name in ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '.']:
+            logic.num_pressed(name)
+        elif name == 'Neg':
+            logic.negate_pressed()
+        elif name == 'Abs':
+            logic.abs_pressed()
+        elif name == 'Fact':
+            logic.fact_pressed()
+        elif name in ['+', '-', '*', '/']:
+            logic.operator_pressed(name)
+        elif name == 'Cls':
+            logic.c_pressed()
+        elif name == 'Bck':
+            pass
+        elif name == 'Sqrt':
+            logic.sqrt_pressed()
+        elif name == '(':
+            pass
+        elif name == ')':
+            pass
+        elif name == 'Pow':
+            pass
+        elif name == '=':
+            pass
         return handleButton
 
     def keyPressEvent(self, event):
