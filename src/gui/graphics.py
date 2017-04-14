@@ -16,7 +16,7 @@ class Graphics(QWidget):
 
     def initUI(self):
 
-        self.equation = QLabel("", self)
+        self.equation = QLabel(logic.term, self)
         self.equation.setAlignment(QtCore.Qt.AlignRight)
 
         self.display = QLCDNumber(self)
@@ -192,17 +192,8 @@ class Graphics(QWidget):
                 logic.rightpar_pressed()
             elif name == '=':
                 logic.get_res(logic.parse())
-        self.equation.setText(logic.term)
+            self.equation.setText(logic.term)
         return handleButton
-
-    def keyPressEvent(self, event):
-        if event.key() == QtCore.Qt.Key_Escape:
-            self.close()
-        elif type(event) == QtGui.QKeyEvent:
-            logic.num_pressed(chr(event.key()))
-            self.label.setText(logic.term)
-        else:
-            event.ignore()
 
 
 if __name__ == '__main__':
