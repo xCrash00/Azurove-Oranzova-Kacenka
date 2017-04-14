@@ -139,10 +139,7 @@ class Graphics(QWidget):
 
         self.equation.setText(logic.term)
 
-
-
-
-        self.btn0.clicked.connect(self.make_handleButton("0"))
+        self.btn0.clicked.connect(self.make_handleButton('0'))
 
         # pevná velikost okna
         self.setFixedSize(360, 330)
@@ -180,6 +177,8 @@ class Graphics(QWidget):
             self.label.setText(logic.term)
         else:
             event.ignore()
+
+
 """
 
         grid.addWidget(button, *position)

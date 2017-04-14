@@ -94,9 +94,9 @@ def find_matching_par(src):
             try:
                 d[istart.pop()] = i
             except IndexError:
-                print('Too many closing parentheses')
+                term = 'Too many closing parentheses'
     if istart:  # check if stack is empty afterwards
-        print('Too many opening parentheses')
+        term = 'Too many opening parentheses'
     return d
 
 
