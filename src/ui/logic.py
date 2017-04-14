@@ -4,6 +4,8 @@ from src import math_lib
 
 global term
 term = ""
+global res
+res = 0
 
 def num_pressed(num):
     global term
@@ -174,7 +176,7 @@ def get_res(source):
         return get_res(source)
 
 
-num_pressed(1)
-num_pressed(2)
-operator_pressed('+')
-num_pressed(3)
+def result():
+    global res
+    res = get_res(parse())
+    return res
