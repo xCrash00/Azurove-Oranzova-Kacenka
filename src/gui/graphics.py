@@ -178,22 +178,20 @@ class Graphics(QWidget):
                 logic.abs_pressed()
             elif name == 'Fact':
                 logic.fact_pressed()
-            elif name in ['+', '-', '*', '/']:
+            elif name in ['+', '-', '*', '/', 'Pow']:
                 logic.operator_pressed(name)
             elif name == 'Cls':
                 logic.c_pressed()
             elif name == 'Bck':
-                pass
+                logic.ce_pressed()
             elif name == 'Sqrt':
                 logic.sqrt_pressed()
             elif name == '(':
-                pass
+                logic.leftpar_pressed()
             elif name == ')':
-                pass
-            elif name == 'Pow':
-                pass
+                logic.rightpar_pressed()
             elif name == '=':
-                pass
+                logic.get_res(logic.parse())
         self.equation.setText(logic.term)
         return handleButton
 

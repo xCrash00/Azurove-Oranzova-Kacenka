@@ -96,7 +96,7 @@ def get_res(source):
     par = sorted(list(find_matching_par(source).items()))
     if par == []:
         op_highprio = ['!', 'abs', 'sqrt']
-        op_prio = ['*', '/', 'pow']
+        op_prio = ['*', '/', 'Pow']
         op = ['+', '-']
 
         simpler = []
