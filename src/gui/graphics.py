@@ -2,8 +2,8 @@
 
 import sys
 
-from PyQt5 import QtCore, QtGui
-from PyQt5.QtWidgets import (QWidget, QApplication, QPushButton, QLCDNumber, QLabel)
+from PyQt5 import QtCore
+from PyQt5.QtWidgets import (QWidget, QApplication, QPushButton, QLabel)
 
 from src.ui import logic
 
@@ -19,7 +19,7 @@ class Graphics(QWidget):
         self.equation = QLabel(logic.term, self)
         self.equation.setAlignment(QtCore.Qt.AlignRight)
 
-        self.display = QLCDNumber(self)
+        self.display = QLabel(logic.res, self)
         self.btn1 = QPushButton("1", self)
         self.btn2 = QPushButton("2", self)
         self.btn3 = QPushButton("3", self)
@@ -192,8 +192,9 @@ class Graphics(QWidget):
             elif name == ')':
                 logic.rightpar_pressed()
             elif name == '=':
-                logic.get_res(logic.parse())
+                logic.result()
             self.equation.setText(logic.term)
+            self.display.setText(logic.res)
         return handleButton
 
 
