@@ -63,5 +63,3 @@ def stdev():
         res = res + tmp
     s = res / par
     return sqrt(s)
-
-
