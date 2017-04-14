@@ -4,6 +4,7 @@ import sys
 
 from PyQt5 import QtCore
 from PyQt5.QtWidgets import (QWidget, QApplication, QPushButton, QLabel)
+from PyQt5 import QtGui
 
 from src.ui import logic
 
@@ -16,10 +17,15 @@ class Graphics(QWidget):
 
     def initUI(self):
 
-        self.equation = QLabel(logic.term, self)
-        self.equation.setAlignment(QtCore.Qt.AlignRight)
+        self.equation = QLabel(str(logic.term), self)
+        self.display = QLabel(str(logic.res), self)
 
-        self.display = QLabel(logic.res, self)
+        self.equation.setAlignment(QtCore.Qt.AlignRight)
+        self.display.setAlignment(QtCore.Qt.AlignRight)
+
+        self.display.setFont(QtGui.QFont('SansSerif', 35))
+        self.equation.setFont(QtGui.QFont('Arial', 15))
+
         self.btn1 = QPushButton("1", self)
         self.btn2 = QPushButton("2", self)
         self.btn3 = QPushButton("3", self)
@@ -79,7 +85,7 @@ class Graphics(QWidget):
         self.btneq.move(300, 270)
 
         self.equation.setMinimumWidth(358)
-        self.display.setMinimumWidth(300)
+        self.display.setMinimumWidth(298)
         self.btn1.setMaximumWidth(60)
         self.btn2.setMaximumWidth(60)
         self.btn3.setMaximumWidth(60)
@@ -193,12 +199,13 @@ class Graphics(QWidget):
                 logic.rightpar_pressed()
             elif name == '=':
                 logic.result()
-            self.equation.setText(logic.term)
-            self.display.setText(logic.res)
+            self.equation.setText(str(logic.term))
+            self.display.setText(str(logic.res))
         return handleButton
 
 
 if __name__ == '__main__':
     app = QApplication(sys.argv)
+    app.setStyle("windows")
     ex = Graphics()
     sys.exit(app.exec_())
