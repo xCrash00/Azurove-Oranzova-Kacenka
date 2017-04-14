@@ -162,6 +162,7 @@ class Graphics(QWidget):
         self.btnRbracket.clicked.connect(self.make_handleButton(')'))
         self.btnpow.clicked.connect(self.make_handleButton('Pow'))
 
+
         # pevná velikost okna
         self.setFixedSize(360, 330)
         self.setWindowTitle('Calculator')
