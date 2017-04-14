@@ -101,7 +101,6 @@ def find_matching_par(src):
 
 
 def get_res(source):
-    print(source)
     par = sorted(list(find_matching_par(source).items()))
     if par == []:
         op_highprio = ['!', 'abs', 'sqrt']
@@ -127,7 +126,6 @@ def get_res(source):
                     del simpler[index]
                     print(simpler)
         simplerer = []
-        print(simpler)
         skip = False
         for item in simpler:
             if skip == True:
@@ -153,7 +151,6 @@ def get_res(source):
                     print(simplerer)
                     skip = True
         simplest = []
-        print(simplerer)
         skip = False
         for item in simplerer:
             if skip == True:
@@ -183,15 +180,3 @@ def get_res(source):
         for a in range(num1, num2 + 1):
             del source[num1]
         return get_res(source)
-
-
-leftpar_pressed()
-leftpar_pressed()
-num_pressed(3)
-operator_pressed('+')
-num_pressed(2)
-rightpar_pressed()
-operator_pressed('*')
-num_pressed(6)
-rightpar_pressed()
-print(get_res(parse()))
