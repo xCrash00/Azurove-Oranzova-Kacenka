@@ -52,6 +52,10 @@ def c_pressed():
 	return 0
 
 
+'''
+maze jen posledni cislo za operatorem, neumi zatim smazat operator
+'''
+
 def ce_pressed():
 	global term
 	while term[-1] != ' ':
