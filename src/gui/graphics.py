@@ -46,7 +46,6 @@ class Graphics(QWidget):
         self.btnpow = QPushButton("^", self)
         self.btneq = QPushButton("=", self)
 
-
         self.equation.move(0, 0)
         self.display.move(0, 30)
         self.btnce.move(300, 30)
@@ -73,12 +72,11 @@ class Graphics(QWidget):
         self.btnneg.move(300, 210)
 
         self.btndot.move(0, 270)
-        self.btn0.move(60,270)
+        self.btn0.move(60, 270)
         self.btnfact.move(120, 270)
         self.btndiv.move(180, 270)
         self.btnpow.move(240, 270)
         self.btneq.move(300, 270)
-
 
         self.equation.setMinimumWidth(358)
         self.display.setMinimumWidth(300)
@@ -107,7 +105,6 @@ class Graphics(QWidget):
         self.btnneg.setMaximumWidth(60)
         self.btnpow.setMaximumWidth(60)
         self.btneq.setMaximumWidth(60)
-
 
         self.equation.setMinimumHeight(30)
         self.display.setMinimumHeight(60)
@@ -139,10 +136,31 @@ class Graphics(QWidget):
 
         self.equation.setText(logic.term)
 
-
-
-
-        self.btn0.clicked.connect(self.make_handleButton("0"))
+        self.btn0.clicked.connect(self.make_handleButton('0'))
+        self.btn1.clicked.connect(self.make_handleButton('1'))
+        self.btn2.clicked.connect(self.make_handleButton('2'))
+        self.btn3.clicked.connect(self.make_handleButton('3'))
+        self.btn4.clicked.connect(self.make_handleButton('4'))
+        self.btn5.clicked.connect(self.make_handleButton('5'))
+        self.btn6.clicked.connect(self.make_handleButton('6'))
+        self.btn7.clicked.connect(self.make_handleButton('7'))
+        self.btn8.clicked.connect(self.make_handleButton('8'))
+        self.btn9.clicked.connect(self.make_handleButton('9'))
+        self.btndot.clicked.connect(self.make_handleButton('.'))
+        self.btnfact.clicked.connect(self.make_handleButton('Fact'))
+        self.btnce.clicked.connect(self.make_handleButton('Bck'))
+        self.btnadd.clicked.connect(self.make_handleButton('+'))
+        self.btnsub.clicked.connect(self.make_handleButton('-'))
+        self.btnmul.clicked.connect(self.make_handleButton('*'))
+        self.btndiv.clicked.connect(self.make_handleButton('/'))
+        self.btnLbracket.clicked.connect(self.make_handleButton('('))
+        self.btnRbracket.clicked.connect(self.make_handleButton(')'))
+        self.btnc.clicked.connect(self.make_handleButton('Cls'))
+        self.btnabs.clicked.connect(self.make_handleButton('Abs'))
+        self.btnsqrt.clicked.connect(self.make_handleButton('Sqrt'))
+        self.btnneg.clicked.connect(self.make_handleButton('Neg'))
+        self.btnpow.clicked.connect(self.make_handleButton(''))
+        self.btneq.clicked.connect(self.make_handleButton(''))
 
         # pevná velikost okna
         self.setFixedSize(360, 330)
@@ -168,7 +186,9 @@ class Graphics(QWidget):
                 logic.c_pressed()
             elif name == 'Bck':
                 logic.ce_pressed()
-            self.label.setText(logic.term)
+            elif name == 'Sqrt':
+                logic.sqrt_pressed()
+            self.equation.setText(logic.term)
 
         return handleButton
 
@@ -180,49 +200,8 @@ class Graphics(QWidget):
             self.label.setText(logic.term)
         else:
             event.ignore()
-"""
-
-        grid.addWidget(button, *position)
-        button.clicked.connect(self.make_handleButton(name))
-    self.move(300, 150)
-    self.setWindowTitle('Calculator')
-    
 
 
-
-def make_handleButton(self, name):
-    def handleButton():
-        if name in ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '.']:
-            logic.num_pressed(name)
-        elif name == 'Neg':
-            logic.negate_pressed()
-        elif name == 'Abs':
-            logic.abs_pressed()
-        elif name == 'Fact':
-            logic.fact_pressed()
-        elif name in ['+', '-', '*', '/']:
-            logic.operator_pressed(name)
-        elif name == '=':
-            logic.get_res()
-        elif name == 'Cls':
-            logic.c_pressed()
-        elif name == 'Bck':
-            logic.ce_pressed()
-        self.label.setText(logic.term)
-
-    return handleButton
-
-
-def keyPressEvent(self, event):
-    if event.key() == QtCore.Qt.Key_Escape:
-        self.close()
-    elif type(event) == QtGui.QKeyEvent:
-        logic.num_pressed(chr(event.key()))
-        self.label.setText(logic.term)
-    else:
-        event.ignore()
-
-"""
 if __name__ == '__main__':
     app = QApplication(sys.argv)
     ex = Graphics()
