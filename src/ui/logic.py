@@ -172,3 +172,9 @@ def get_res(source):
         for a in range(num1, num2 + 1):
             del source[num1]
         return get_res(source)
+
+
+num_pressed(1)
+num_pressed(2)
+operator_pressed('+')
+num_pressed(3)
