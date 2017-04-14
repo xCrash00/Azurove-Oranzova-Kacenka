@@ -39,9 +39,10 @@ def fact(a):
 
 def pow(a, b=2):
 	if a == 0 and b == 0:
-        raise ValueError
-    else:
-        return float(a ** b)
+		raise ValueError
+	else:
+		return float(a ** b)
+
 def stdev():
     list2 = input()
     list2= sorted(list2.split(" "))

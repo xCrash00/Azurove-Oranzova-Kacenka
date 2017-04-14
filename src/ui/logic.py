@@ -2,6 +2,7 @@
 
 from src import math_lib
 
+global term
 term = ""
 
 def num_pressed(num):
@@ -134,12 +135,3 @@ def get_res():
 				print(simplest)
 				skip = True
 	return simplest
-
-
-math_lib.stdev()
-negate_pressed()
-num_pressed(1)
-operator_pressed('*')
-operator_pressed('*')
-operator_pressed('/')
-print(get_res())
