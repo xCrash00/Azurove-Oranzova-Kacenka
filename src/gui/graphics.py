@@ -170,32 +170,31 @@ class Graphics(QWidget):
 
     def make_handleButton(self, name):
         def handleButton():
-            self.equation.setText(logic.term)
-
-        if name in ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '.']:
-            logic.num_pressed(name)
-        elif name == 'Neg':
-            logic.negate_pressed()
-        elif name == 'Abs':
-            logic.abs_pressed()
-        elif name == 'Fact':
-            logic.fact_pressed()
-        elif name in ['+', '-', '*', '/']:
-            logic.operator_pressed(name)
-        elif name == 'Cls':
-            logic.c_pressed()
-        elif name == 'Bck':
-            pass
-        elif name == 'Sqrt':
-            logic.sqrt_pressed()
-        elif name == '(':
-            pass
-        elif name == ')':
-            pass
-        elif name == 'Pow':
-            pass
-        elif name == '=':
-            pass
+            if name in ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '.']:
+                logic.num_pressed(name)
+            elif name == 'Neg':
+                logic.negate_pressed()
+            elif name == 'Abs':
+                logic.abs_pressed()
+            elif name == 'Fact':
+                logic.fact_pressed()
+            elif name in ['+', '-', '*', '/']:
+                logic.operator_pressed(name)
+            elif name == 'Cls':
+                logic.c_pressed()
+            elif name == 'Bck':
+                pass
+            elif name == 'Sqrt':
+                logic.sqrt_pressed()
+            elif name == '(':
+                pass
+            elif name == ')':
+                pass
+            elif name == 'Pow':
+                pass
+            elif name == '=':
+                pass
+        self.equation.setText(logic.term)
         return handleButton
 
     def keyPressEvent(self, event):
