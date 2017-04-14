@@ -16,7 +16,6 @@ def operator_pressed(operator):
     term += ' ' + operator + ' '
     return 0
 
-
 def fact_pressed():
     global term
     term += ' !'
