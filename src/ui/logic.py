@@ -32,7 +32,7 @@ def abs_pressed():
 
 def sqrt_pressed():
     global term
-    term += ' sqrt'
+    term += 'sqrt ( '
     return 0
 
 
@@ -45,14 +45,21 @@ def negate_pressed():
 def c_pressed():
     global term
     term = ''
+    global res
+    res = 0
     return 0
 
 
 def ce_pressed():
     global term
+    if len(term) == 0:
+        return 0
     if term[-1] == ' ':
         term = term[:-1]
     while term[-1] != ' ':
+        if len(term) == 1:
+            term = ''
+            return 0
         term = term[:-1]
     if term[-1] == ' ':
         term = term[:-1]
@@ -103,21 +110,30 @@ def get_res(source):
 
         simpler = []
         for item in source:
+            skip = False
+            for item in simpler:
+                if skip == True:
+                    skip = False
+                    continue
             simpler.append(item)
             if item in op_highprio:
                 index = simpler.index(item)
-                value = simpler[index - 1]
                 if item == '!':
+                    value = simpler[index - 1]
                     simpler[index - 1] = math_lib.fact(float(value))
                     del simpler[index]
                     print(simpler)
                 elif item == 'abs':
+                    value = simpler[index - 1]
                     simpler[index - 1] = math_lib.abs(float(value))
                     del simpler[index]
                     print(simpler)
                 else:
-                    simpler[index - 1] = math_lib.sqrt(float(value))
-                    del simpler[index]
+                    index = source.index(item)
+                    value = source[index + 1]
+                    index = simpler.index(item)
+                    simpler[index] = math_lib.sqrt(float(value))
+                    skip = True
                     print(simpler)
         simplerer = []
         skip = False
@@ -136,7 +152,7 @@ def get_res(source):
                     simplerer.append(math_lib.mul(float(value1), float(value2)))
                     print(simplerer)
                     skip = True
-                elif item == 'pow':
+                elif item == 'Pow':
                     simplerer.append(math_lib.pow(float(value1), float(value2)))
                     print(simplerer)
                     skip = True
@@ -176,7 +192,22 @@ def get_res(source):
         return get_res(source)
 
 
+def is_number(s):
+    try:
+        float(s)
+        return True
+    except ValueError:
+        return False
 def result():
     global res
-    res = get_res(parse())
+    global term
+    source = parse()
+    if is_number(term):
+        res = float(term)
+    elif term == '':
+        return res
+    else:
+        res = get_res(source)
+    if res.is_integer():
+        res = int(res)
     return res
