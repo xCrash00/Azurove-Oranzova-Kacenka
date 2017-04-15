@@ -24,6 +24,11 @@ def fact_pressed():
     return 0
 
 
+def pow_pressed():
+    global term
+    term += ' Pow '
+    return 0
+
 def abs_pressed():
     global term
     term += ' abs'
@@ -32,7 +37,7 @@ def abs_pressed():
 
 def sqrt_pressed():
     global term
-    term += 'sqrt ( '
+    term += 'sqrt '
     return 0
 
 
@@ -63,6 +68,12 @@ def ce_pressed():
         term = term[:-1]
     if term[-1] == ' ':
         term = term[:-1]
+    return 0
+
+
+def comma_pressed():
+    global term
+    term += ','
     return 0
 
 
@@ -110,9 +121,13 @@ def get_res(source):
 
         simpler = []
         for item in source:
-            skip = False
-            if skip == True:
-                skip = False
+            skip1 = False
+            skip2 = False
+            if skip1 == True:
+                skip1 = False
+                continue
+            if skip2 == True:
+                skip2 == False
                 continue
             simpler.append(item)
             if item in op_highprio:
@@ -130,8 +145,12 @@ def get_res(source):
                 else:
                     index = source.index(item)
                     value = source[index + 1]
+                    value2 = 2
                     index = simpler.index(item)
-                    simpler[index] = math_lib.sqrt(float(value))
+                    if ',' in value:
+                        value2 = value.split(',')[1]
+                        value = value.split(',')[0]
+                    simpler[index] = math_lib.sqrt(float(value), float(value2))
                     skip = True
                     print(simpler)
         simplerer = []
