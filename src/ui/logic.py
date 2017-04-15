@@ -23,12 +23,6 @@ def fact_pressed():
     term += ' !'
     return 0
 
-
-def pow_pressed():
-    global term
-    term += ' Pow '
-    return 0
-
 def abs_pressed():
     global term
     term += ' abs'
@@ -37,7 +31,7 @@ def abs_pressed():
 
 def sqrt_pressed():
     global term
-    term += 'sqrt '
+    term += ' sqrt '
     return 0
 
 
@@ -73,7 +67,7 @@ def ce_pressed():
 
 def comma_pressed():
     global term
-    term += ','
+    term += ' , '
     return 0
 
 
@@ -120,14 +114,10 @@ def get_res(source):
         op = ['+', '-']
 
         simpler = []
+        skip = False
         for item in source:
-            skip1 = False
-            skip2 = False
-            if skip1 == True:
-                skip1 = False
-                continue
-            if skip2 == True:
-                skip2 == False
+            if skip == True:
+                skip = False
                 continue
             simpler.append(item)
             if item in op_highprio:
@@ -143,16 +133,19 @@ def get_res(source):
                     del simpler[index]
                     print(simpler)
                 else:
-                    index = source.index(item)
-                    value = source[index + 1]
-                    value2 = 2
                     index = simpler.index(item)
-                    if ',' in value:
-                        value2 = value.split(',')[1]
-                        value = value.split(',')[0]
-                    simpler[index] = math_lib.sqrt(float(value), float(value2))
-                    skip = True
+                    index2 = source.index(item)
+                    value1 = source[index + 1]
+                    print(index)
+                    if simpler[index - 1] == '':
+                        simpler = simpler[:-2]
+                        simpler.append(math_lib.sqrt(float(value1)))
+                    else:
+                        value2 = simpler[index2 - 1]
+                        simpler = simpler[:-2]
+                        simpler.append(math_lib.sqrt(float(value1), float(value2)))
                     print(simpler)
+                    skip = True
         simplerer = []
         skip = False
         for item in simpler:
@@ -179,10 +172,10 @@ def get_res(source):
                     print(simplerer)
                     skip = True
         simplest = []
-        skip = False
+        skip1 = False
         for item in simplerer:
-            if skip == True:
-                skip = False
+            if skip1 == True:
+                skip1 = False
                 continue
             simplest.append(item)
             if item in op:
@@ -194,11 +187,11 @@ def get_res(source):
                 if item == '+':
                     simplest.append(math_lib.add(float(value1), float(value2)))
                     print(simplest)
-                    skip = True
+                    skip1 = True
                 elif item == '-':
                     simplest.append(math_lib.sub(float(value1), float(value2)))
                     print(simplest)
-                    skip = True
+                    skip1 = True
         return simplest[0]
     else:
         first = par[0]
