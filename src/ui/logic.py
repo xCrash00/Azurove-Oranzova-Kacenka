@@ -31,7 +31,7 @@ def abs_pressed():
 
 def sqrt_pressed():
     global term
-    term += ' sqrt '
+    term += ' √ '
     return 0
 
 
@@ -109,7 +109,7 @@ def find_matching_par(src):
 def get_res(source):
     par = sorted(list(find_matching_par(source).items()))
     if par == []:
-        op_highprio = ['!', 'abs', 'sqrt']
+        op_highprio = ['!', 'abs', '√']
         op_prio = ['*', '/', 'Pow']
         op = ['+', '-']
 
