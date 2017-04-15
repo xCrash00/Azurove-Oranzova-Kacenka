@@ -3,8 +3,8 @@
 import sys
 
 from PyQt5 import QtCore
-from PyQt5.QtWidgets import (QWidget, QApplication, QPushButton, QLabel)
 from PyQt5 import QtGui
+from PyQt5.QtWidgets import (QWidget, QApplication, QPushButton, QLabel)
 
 from src.ui import logic
 
@@ -204,7 +204,7 @@ class Graphics(QWidget):
             elif name == '=':
                 logic.result()
             elif name == 'Powx':
-                pass
+                logic.comma_pressed()
             self.equation.setText(str(logic.term))
             self.display.setText(str(logic.res))
         return handleButton
