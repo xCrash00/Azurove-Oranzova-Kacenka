@@ -111,10 +111,9 @@ def get_res(source):
         simpler = []
         for item in source:
             skip = False
-            for item in simpler:
-                if skip == True:
-                    skip = False
-                    continue
+            if skip == True:
+                skip = False
+                continue
             simpler.append(item)
             if item in op_highprio:
                 index = simpler.index(item)
