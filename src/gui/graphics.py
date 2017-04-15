@@ -51,6 +51,7 @@ class Graphics(QWidget):
         self.btnneg = QPushButton("neg", self)
         self.btnpow = QPushButton("^", self)
         self.btneq = QPushButton("=", self)
+        self.btnsqrtx = QPushButton("Rozšířená √", self)
 
         self.equation.move(0, 0)
         self.display.move(0, 30)
@@ -83,6 +84,7 @@ class Graphics(QWidget):
         self.btndiv.move(180, 270)
         self.btnpow.move(240, 270)
         self.btneq.move(300, 270)
+        self.btnsqrtx.move(0, 330)
 
         self.equation.setMinimumWidth(358)
         self.display.setMinimumWidth(298)
@@ -139,6 +141,7 @@ class Graphics(QWidget):
         self.btnneg.setMinimumHeight(60)
         self.btnpow.setMinimumHeight(60)
         self.btneq.setMinimumHeight(60)
+        self.btnsqrtx.setMinimumHeight(60)
 
         self.equation.setText(logic.term)
 
@@ -167,10 +170,11 @@ class Graphics(QWidget):
         self.btnLbracket.clicked.connect(self.make_handleButton('('))
         self.btnRbracket.clicked.connect(self.make_handleButton(')'))
         self.btnpow.clicked.connect(self.make_handleButton('Pow'))
+        self.btnsqrtx.clicked.connect(self.make_handleButton('Powx'))
 
 
         # pevná velikost okna
-        self.setFixedSize(360, 330)
+        self.setFixedSize(360, 390)
         self.setWindowTitle('Calculator')
 
         self.show()
@@ -199,6 +203,8 @@ class Graphics(QWidget):
                 logic.rightpar_pressed()
             elif name == '=':
                 logic.result()
+            elif name == 'Powx':
+                pass
             self.equation.setText(str(logic.term))
             self.display.setText(str(logic.res))
         return handleButton
