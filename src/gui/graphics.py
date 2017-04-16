@@ -269,10 +269,12 @@ class Graphics(QWidget):
                 logic.abs_pressed()
             elif name == 'Fact':
                 logic.fact_pressed()
-            elif name in ['+', '-', '*', '/', 'Pow']:
+            elif name in ['+', '-', '*', '/']:
                 logic.operator_pressed(name)
             elif name == 'Cls':
                 logic.c_pressed()
+            elif name == 'Pow':
+                logic.operator_pressed('^')
             elif name == 'Bck':
                 logic.ce_pressed()
             elif name == 'Sqrt':

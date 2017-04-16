@@ -22,7 +22,7 @@ def operator_pressed(operator):
     '''
     @brief Function that adds given operator to global string "term", surrounded by two spaces, so the string can be
     parsed later.
-    @param operator: Operator to be appended. (+,-,*,/,pow)
+    @param operator: Operator to be appended. (+,-,*,/,^)
     @return 0 if everything goes well
     '''
     global term
