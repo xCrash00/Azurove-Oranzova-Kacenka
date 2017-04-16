@@ -26,104 +26,16 @@ class Graphics(QWidget):
         @brief Create graphics look and print it as created window
         """
 
-        #### MOCKUP
-
-        self.mockup_bmi = QPushButton("BMI", self)
-        self.mockup_bmi.setMinimumHeight(60)
-        self.mockup_bmi.setMinimumWidth(90)
-        self.mockup_bmi.move(0, 330)
-
-        self.mockup_science = QPushButton("Scientific", self)
-        self.mockup_science.setMinimumHeight(60)
-        self.mockup_science.setMinimumWidth(90)
-        self.mockup_science.move(90, 330)
-
-        self.mockup_graph = QPushButton("Graphs", self)
-        self.mockup_graph.setMinimumHeight(60)
-        self.mockup_graph.setMinimumWidth(90)
-        self.mockup_graph.move(180, 330)
-
-        self.mockup_basic = QPushButton("Standart", self)
-        self.mockup_basic.setMinimumHeight(60)
-        self.mockup_basic.setMinimumWidth(90)
-        self.mockup_basic.move(270, 330)
-
-        win = QWidget()
-
-        e1 = QLineEdit("190")
-        e1.move(10, 100)
-        e2 = QLineEdit("83")
-
-        flo = QFormLayout()
-        flo.addRow("Enter your height: ", e1)
-        flo.addRow("Enter your weight: ", e2)
-        self.setLayout(flo)
-
-        """
-        self.btne = QPushButton("Y", self)
-        self.btne.setMinimumHeight(60)
-        self.btne.setMaximumWidth(60)
-        self.btne.move(420, 330)
-
-        self.btnf = QPushButton("X", self)
-        self.btnf.setMinimumHeight(60)
-        self.btnf.setMaximumWidth(60)
-        self.btnf.move(360, 330)
-
-        self.btna = QPushButton("set", self)
-        self.btna.setMinimumHeight(60)
-        self.btna.setMaximumWidth(60)
-        self.btna.move(480, 330)
-
-
-       
-        self.btna = QPushButton("Sin", self)
-        self.btna.setMinimumHeight(60)
-        self.btna.setMaximumWidth(60)
-        self.btna.move(360, 30)
-
-        self.btnb = QPushButton("Cos", self)
-        self.btnb.setMinimumHeight(60)
-        self.btnb.setMaximumWidth(60)
-        self.btnb.move(360, 90)
-
-        self.btnc = QPushButton("Tan", self)
-        self.btnc.setMinimumHeight(60)
-        self.btnc.setMaximumWidth(60)
-        self.btnc.move(360, 150)
-
-        self.btnd = QPushButton("Log", self)
-        self.btnd.setMinimumHeight(60)
-        self.btnd.setMaximumWidth(60)
-        self.btnd.move(360, 210)
-
-        self.btne = QPushButton("Exp", self)
-        self.btne.setMinimumHeight(60)
-        self.btne.setMaximumWidth(60)
-        self.btne.move(360, 270)
-
-        self.btnf = QPushButton("Mod", self)
-        self.btnf.setMinimumHeight(60)
-        self.btnf.setMaximumWidth(60)
-        self.btnf.move(360, 330)
-        """
-
-        logic.res = 'Your BMI is: 21'
 
         self.equation = QLabel(str(logic.term), self)
         self.display = QLabel(str(logic.res), self)
         #self.equation.setAlignment(QtCore.Qt.AlignRight)
         self.display.setAlignment(QtCore.Qt.AlignRight)
 
-        #self.display.setFont(QtGui.QFont('SansSerif', 35))
-        self.display.setFont(QtGui.QFont('SansSerif', 20))
+        self.display.setFont(QtGui.QFont('SansSerif', 35))
         self.equation.setFont(QtGui.QFont('Arial', 15))
 
-        ############
-        self.display.move(0, 60)
-        self.equation.setMinimumWidth(358)
-        self.display.setMinimumWidth(298)
-        """
+
         self.btn1 = QPushButton("1", self)
         self.btn2 = QPushButton("2", self)
         self.btn3 = QPushButton("3", self)
@@ -266,17 +178,12 @@ class Graphics(QWidget):
         self.btnLbracket.clicked.connect(self.make_handleButton('('))
         self.btnRbracket.clicked.connect(self.make_handleButton(')'))
         self.btnpow.clicked.connect(self.make_handleButton('Pow'))
-        """
 
-        self.mockup_bmi.clicked.connect(self.make_handleButton('nope'))
-        self.mockup_basic.clicked.connect(self.make_handleButton('nope'))
-        self.mockup_graph.clicked.connect(self.make_handleButton('nope'))
-        self.mockup_science.clicked.connect(self.make_handleButton('nope'))
 
 
         # pevná velikost okna
 
-        self.setFixedSize(360, 390)
+        self.setFixedSize(360, 330)
 
         self.setWindowTitle('Calculator')
 
@@ -389,9 +296,6 @@ class Graphics(QWidget):
                 logic.rightpar_pressed()
             elif name == '=':
                 logic.result()
-            elif name == 'nope':
-                self.equation.setText("Not supported yet")
-                return
             self.equation.setText(str(logic.term))
             self.display.setText(str(logic.res))
         return handleButton
