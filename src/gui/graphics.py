@@ -212,7 +212,11 @@ class Graphics(QWidget):
             self.btn8.click()
         elif key == QtCore.Qt.Key_9:
             self.btn9.click()
+
+        # operators
         elif key == QtCore.Qt.Key_Enter:
+            self.btneq.click()
+        elif key == QtCore.Qt.Key_Return:
             self.btneq.click()
         elif key == QtCore.Qt.Key_Comma:
             self.btndot.click()
@@ -223,7 +227,7 @@ class Graphics(QWidget):
         elif key == QtCore.Qt.Key_Asterisk:
             self.btnmul.click()
         elif key == QtCore.Qt.Key_Slash:
-            self.btnsub.click()
+            self.btndiv.click()
         elif key == QtCore.Qt.Key_Backspace:
             self.btnce.click()
         elif key == QtCore.Qt.Key_C:
@@ -233,7 +237,7 @@ class Graphics(QWidget):
         elif key == QtCore.Qt.Key_ParenRight:
             self.btnRbracket.click()
 
-        #functions
+        # functions
         elif key == QtCore.Qt.Key_S:
             self.btnsqrt.click()
         elif key == QtCore.Qt.Key_P:
@@ -248,7 +252,8 @@ class Graphics(QWidget):
         # exit
         elif qKeyEvent.key() == QtCore.Qt.Key_Escape:
             self.close()
-
+        else:
+            pass
 
 
     def make_handleButton(self, name):
