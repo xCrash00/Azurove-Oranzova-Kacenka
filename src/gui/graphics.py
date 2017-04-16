@@ -4,7 +4,7 @@ import sys
 
 from PyQt5 import QtCore
 from PyQt5 import QtGui
-from PyQt5.QtWidgets import (QWidget, QApplication, QPushButton, QLabel)
+from PyQt5.QtWidgets import (QWidget, QApplication, QPushButton, QLabel, QFormLayout, QLineEdit)
 
 from src.ui import logic
 
@@ -25,6 +25,32 @@ class Graphics(QWidget):
         """
         @brief Create graphics look and print it as created window
         """
+        self.type = 1
+
+        #### MOCKUP
+
+        self.mockup_bmi = QPushButton("BMI", self)
+        self.mockup_bmi.setMinimumHeight(60)
+        self.mockup_bmi.setMinimumWidth(90)
+        self.mockup_bmi.move(0, 330)
+
+        self.mockup_science = QPushButton("Science calc", self)
+        self.mockup_science.setMinimumHeight(60)
+        self.mockup_science.setMinimumWidth(90)
+        self.mockup_science.move(90, 330)
+
+        self.mockup_graph = QPushButton("Graphs", self)
+        self.mockup_graph.setMinimumHeight(60)
+        self.mockup_graph.setMinimumWidth(90)
+        self.mockup_graph.move(180, 330)
+
+        self.mockup_basic = QPushButton("Basic calc", self)
+        self.mockup_basic.setMinimumHeight(60)
+        self.mockup_basic.setMinimumWidth(90)
+        self.mockup_basic.move(270, 330)
+
+        ###
+
         self.equation = QLabel(str(logic.term), self)
         self.display = QLabel(str(logic.res), self)
 
@@ -179,10 +205,14 @@ class Graphics(QWidget):
 
 
         # pevná velikost okna
-        self.setFixedSize(360, 330)
+        if self.type is 1:
+            self.setFixedSize(360, 390)
+        elif self.type is 2:
+            self.setFixedSize(800, 390)
         self.setWindowTitle('Calculator')
 
         self.show()
+
 
     def keyPressEvent(self, qKeyEvent):
         """
