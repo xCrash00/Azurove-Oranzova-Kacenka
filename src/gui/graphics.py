@@ -62,14 +62,14 @@ class Graphics(QWidget):
 
         self.equation.move(0, 0)
         self.display.move(0, 30)
-        self.btnce.move(300, 30)
+        self.btnce.move(300, 90)
 
         self.btn1.move(0, 90)
         self.btn2.move(60, 90)
         self.btn3.move(120, 90)
         self.btnadd.move(180, 90)
         self.btnLbracket.move(240, 90)
-        self.btnc.move(300, 90)
+        self.btnc.move(300, 30)
 
         self.btn4.move(0, 150)
         self.btn5.move(60, 150)
@@ -179,10 +179,77 @@ class Graphics(QWidget):
 
 
         # pevná velikost okna
-        self.setFixedSize(360, 390)
+        self.setFixedSize(360, 330)
         self.setWindowTitle('Calculator')
 
         self.show()
+
+    def keyPressEvent(self, qKeyEvent):
+        """
+        @brief Watching signal keyPressEvent and simulate click on specific button
+        @param qKeyEvent - signal from keyboard
+        """
+        key = qKeyEvent.key()
+
+        # keys
+        if key == QtCore.Qt.Key_0:
+            self.btn0.click()
+        elif key == QtCore.Qt.Key_1:
+            self.btn1.click()
+        elif key == QtCore.Qt.Key_2:
+            self.btn2.click()
+        elif key == QtCore.Qt.Key_3:
+            self.btn3.click()
+        elif key == QtCore.Qt.Key_4:
+            self.btn4.click()
+        elif key == QtCore.Qt.Key_5:
+            self.btn5.click()
+        elif key == QtCore.Qt.Key_6:
+            self.btn6.click()
+        elif key == QtCore.Qt.Key_7:
+            self.btn7.click()
+        elif key == QtCore.Qt.Key_8:
+            self.btn8.click()
+        elif key == QtCore.Qt.Key_9:
+            self.btn9.click()
+        elif key == QtCore.Qt.Key_Enter:
+            self.btneq.click()
+        elif key == QtCore.Qt.Key_Comma:
+            self.btndot.click()
+        elif key == QtCore.Qt.Key_Plus:
+            self.btnadd.click()
+        elif key == QtCore.Qt.Key_Minus:
+            self.btnsub.click()
+        elif key == QtCore.Qt.Key_Asterisk:
+            self.btnmul.click()
+        elif key == QtCore.Qt.Key_Slash:
+            self.btnsub.click()
+        elif key == QtCore.Qt.Key_Backspace:
+            self.btnce.click()
+        elif key == QtCore.Qt.Key_C:
+            self.btnc.click()
+        elif key == QtCore.Qt.Key_ParenLeft:
+            self.btnLbracket.click()
+        elif key == QtCore.Qt.Key_ParenRight:
+            self.btnRbracket.click()
+
+        #functions
+        elif key == QtCore.Qt.Key_S:
+            self.btnsqrt.click()
+        elif key == QtCore.Qt.Key_P:
+            self.btnpow.click()
+        elif key == QtCore.Qt.Key_F:
+            self.btnfact.click()
+        elif key == QtCore.Qt.Key_N:
+            self.btnneg.click()
+        elif key == QtCore.Qt.Key_A:
+            self.btnabs.click()
+
+        # exit
+        elif qKeyEvent.key() == QtCore.Qt.Key_Escape:
+            self.close()
+
+
 
     def make_handleButton(self, name):
         """
