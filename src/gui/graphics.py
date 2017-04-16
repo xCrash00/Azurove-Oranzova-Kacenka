@@ -10,13 +10,21 @@ from src.ui import logic
 
 
 class Graphics(QWidget):
+    """
+    @brief Class Graphics - contains methods that create GUI for calculator
+    """
     def __init__(self):
+        """
+        @brief Constructor __init__ initialize objects from class QWidget
+        """
         super().__init__()
 
         self.initUI()
 
     def initUI(self):
-
+        """
+        @brief Create graphics look and print it as created window
+        """
         self.equation = QLabel(str(logic.term), self)
         self.display = QLabel(str(logic.res), self)
 
@@ -51,7 +59,6 @@ class Graphics(QWidget):
         self.btnneg = QPushButton("neg", self)
         self.btnpow = QPushButton("^", self)
         self.btneq = QPushButton("=", self)
-        self.btnsqrtx = QPushButton("Rozšířená √", self)
 
         self.equation.move(0, 0)
         self.display.move(0, 30)
@@ -84,7 +91,6 @@ class Graphics(QWidget):
         self.btndiv.move(180, 270)
         self.btnpow.move(240, 270)
         self.btneq.move(300, 270)
-        self.btnsqrtx.move(0, 330)
 
         self.equation.setMinimumWidth(358)
         self.display.setMinimumWidth(298)
@@ -141,10 +147,10 @@ class Graphics(QWidget):
         self.btnneg.setMinimumHeight(60)
         self.btnpow.setMinimumHeight(60)
         self.btneq.setMinimumHeight(60)
-        self.btnsqrtx.setMinimumHeight(60)
 
         self.equation.setText(logic.term)
 
+        # connect buttons with logic
         self.btn0.clicked.connect(self.make_handleButton('0'))
         self.btn1.clicked.connect(self.make_handleButton('1'))
         self.btn2.clicked.connect(self.make_handleButton('2'))
@@ -170,7 +176,6 @@ class Graphics(QWidget):
         self.btnLbracket.clicked.connect(self.make_handleButton('('))
         self.btnRbracket.clicked.connect(self.make_handleButton(')'))
         self.btnpow.clicked.connect(self.make_handleButton('Pow'))
-        self.btnsqrtx.clicked.connect(self.make_handleButton('Powx'))
 
 
         # pevná velikost okna
@@ -180,7 +185,15 @@ class Graphics(QWidget):
         self.show()
 
     def make_handleButton(self, name):
+        """
+        @brief Function connect logic with GUI
+        @param name - Value sent on event from GUI
+        @return - Inside function, that compare values
+        """
         def handleButton():
+            """
+            @brief Compare string sent on signal 'clicked' with value and calls appropriate function from logic
+            """
             if name in ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '.']:
                 logic.num_pressed(name)
             elif name == 'Neg':
@@ -203,13 +216,11 @@ class Graphics(QWidget):
                 logic.rightpar_pressed()
             elif name == '=':
                 logic.result()
-            elif name == 'Powx':
-                logic.comma_pressed()
             self.equation.setText(str(logic.term))
             self.display.setText(str(logic.res))
         return handleButton
 
-
+# startup for app
 if __name__ == '__main__':
     app = QApplication(sys.argv)
     app.setStyle("windows")
