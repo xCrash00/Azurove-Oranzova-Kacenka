@@ -89,6 +89,27 @@ def parse():
     return parts
 
 
+def is_valid(list):
+    operators = ['+', '-', '*', '/', '√', 'fact']
+    global term
+    index = -1
+    for item in list:
+        index += 1
+        if index + 1 <= len(list):
+            if is_number(item):
+                if index + 1 != len(list):
+                    if list[index + 1] not in operators:
+                        term = 'Error'
+                        raise ValueError
+            elif item in operators:
+                if is_number(list[index + 1]) == False:
+                    term = 'Error'
+                    raise ValueError
+        elif item == '':
+            term = 'Error'
+            raise ValueError
+    return 0
+
 def find_matching_par(src):
     istart = []  # stack of indices of opening parentheses
     d = {}
@@ -101,14 +122,24 @@ def find_matching_par(src):
                 d[istart.pop()] = i
             except IndexError:
                 term = 'Too many closing parentheses'
+                raise ValueError
     if istart:  # check if stack is empty afterwards
         term = 'Too many opening parentheses'
+        raise ValueError
     return d
 
 
 def get_res(source):
+    try:
+        find_matching_par(source)
+    except ValueError:
+        raise ValueError
     par = sorted(list(find_matching_par(source).items()))
     if par == []:
+        try:
+            is_valid(source)
+        except ValueError:
+            raise ValueError
         op_highprio = ['!', 'abs', '√']
         op_prio = ['*', '/', 'Pow']
         op = ['+', '-']
@@ -197,11 +228,18 @@ def get_res(source):
         first = par[0]
         num1 = first[0] + 1
         num2 = first[1]
-        source[first[0]] = get_res(source[num1:num2])
+        try:
+            get_res(source[num1:num2])
+            source[first[0]] = get_res(source[num1:num2])
+        except ValueError:
+            raise ValueError
         for a in range(num1, num2 + 1):
             del source[num1]
-        return get_res(source)
-
+        try:
+            get_res(source)
+            return get_res(source)
+        except ValueError:
+            raise ValueError
 
 def is_number(s):
     try:
@@ -218,7 +256,12 @@ def result():
     elif term == '':
         return res
     else:
-        res = get_res(source)
+        try:
+            get_res(source)
+            res = get_res(source)
+        except ValueError:
+            term = 'Error'
+            return res
     if res.is_integer():
         res = int(res)
     return res
