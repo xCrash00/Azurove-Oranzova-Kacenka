@@ -26,10 +26,9 @@ class Graphics(QWidget):
         @brief Create graphics look and print it as created window
         """
 
-
         self.equation = QLabel(str(logic.term), self)
         self.display = QLabel(str(logic.res), self)
-        #self.equation.setAlignment(QtCore.Qt.AlignRight)
+        self.equation.setAlignment(QtCore.Qt.AlignRight)
         self.display.setAlignment(QtCore.Qt.AlignRight)
 
         self.display.setFont(QtGui.QFont('SansSerif', 35))
@@ -178,10 +177,7 @@ class Graphics(QWidget):
         self.btnLbracket.clicked.connect(self.make_handleButton('('))
         self.btnRbracket.clicked.connect(self.make_handleButton(')'))
         self.btnpow.clicked.connect(self.make_handleButton('Pow'))
-
-
-
-        # pevná velikost okna
+        
 
         self.setFixedSize(360, 330)
 
