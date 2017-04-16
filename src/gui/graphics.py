@@ -177,7 +177,7 @@ class Graphics(QWidget):
         self.btnLbracket.clicked.connect(self.make_handleButton('('))
         self.btnRbracket.clicked.connect(self.make_handleButton(')'))
         self.btnpow.clicked.connect(self.make_handleButton('Pow'))
-        
+
 
         self.setFixedSize(360, 330)
 
@@ -192,7 +192,6 @@ class Graphics(QWidget):
         @param qKeyEvent - signal from keyboard
         """
         key = qKeyEvent.key()
-
         # keys
         if key == QtCore.Qt.Key_0:
             self.btn0.click()
@@ -245,6 +244,8 @@ class Graphics(QWidget):
         elif key == QtCore.Qt.Key_P:
             self.btnpow.click()
         elif key == QtCore.Qt.Key_F:
+            self.btnfact.click()
+        elif key == QtCore.Qt.Key_Exclam:
             self.btnfact.click()
         elif key == QtCore.Qt.Key_N:
             self.btnneg.click()
