@@ -7,86 +7,80 @@ term = ""
 global res
 res = 0
 
+##
+# @brief Function that adds given number to global string "term".
+# @param num: Number to be appended.
+# @return 0 if everything goes well
 def num_pressed(num):
-    '''
-    @brief Function that adds given number to global string "term".
-    @param num: Number to be appended.
-    @return 0 if everything goes well
-    '''
     global term
     term += str(num)
     return 0
 
-
+##
+# @brief Function that adds given operator to global string "term", surrounded by two spaces, so the string can be
+# parsed later.
+# @param operator: Operator to be appended. (+,-,*,/,^)
+# @return 0 if everything goes well
 def operator_pressed(operator):
-    '''
-    @brief Function that adds given operator to global string "term", surrounded by two spaces, so the string can be
-    parsed later.
-    @param operator: Operator to be appended. (+,-,*,/,^)
-    @return 0 if everything goes well
-    '''
+
     global term
     term += ' ' + operator + ' '
     return 0
 
+##
+# @brief Function that adds factorial symbol to global string "term". There will be a space before '!'.
+# @return 0 if everything goes well
 def fact_pressed():
-    '''
-    @brief Function that adds factorial symbol to global string "term". There will be a space before '!'.
-    @return 0 if everything goes well
-    '''
+
     global term
     term += ' !'
     return 0
 
+##
+# @brief Function that adds ' abs' string to global string "term". There will be a space before 'abs'.
+# @return 0 if everything goes well
 def abs_pressed():
-    '''
-    @brief Function that adds ' abs' string to global string "term". There will be a space before 'abs'.
-    @return 0 if everything goes well
-    '''
+
     global term
     term += ' abs'
     return 0
 
-
+##
+# @brief Function that adds root symbol to global string "term". Root symbol √ will be surrounded by spaces.
+# @return 0 if everything goes well
 def sqrt_pressed():
-    '''
-    @brief Function that adds root symbol to global string "term". Root symbol √ will be surrounded by spaces.
-    @return 0 if everything goes well
-    '''
+
     global term
     term += ' √ '
     return 0
 
-
+##
+# @brief Function that adds minus symbol to global string "term". Minus sign will stick to number, because there are
+# no spaces around '-'.
+# @return 0 if everything goes well
 def negate_pressed():
-    '''
-    @brief Function that adds minus symbol to global string "term". Minus sign will stick to number, because there are
-    no spaces around '-'.
-    @return 0 if everything goes well
-    '''
+
     global term
     term += '-'
     return 0
 
-
+##
+# @brief Function that clears global term by setting it equal to ''. It sets global res to 0.
+# @return 0 if everything goes well
 def c_pressed():
-    '''
-    @brief Function that clears global term by setting it equal to ''. It sets global res to 0.
-    @return 0 if everything goes well
-    '''
+
     global term
     term = ''
     global res
     res = 0
     return 0
 
-
+##
+# @brief Function that removes last given sequence from global term. It removes a single operator, or continuous
+# numbers.
+# @return 0 if everything goes well
 def ce_pressed():
-    '''
-    @brief Function that removes last given sequence from global term. It removes a single operator, or continuous
-    numbers.
-    @return 0 if everything goes well
-    '''
+
     global term
     if len(term) == 0:  # if there is nothing in term, result is 0
         return 0
@@ -101,43 +95,40 @@ def ce_pressed():
         term = term[:-1]
     return 0
 
+##
+# @brief Function that adds opening parenthesis symbol to global string "term". There will be a space after it.
+# @return 0 if everything goes well
 def leftpar_pressed():
-    '''
-    @brief Function that adds opening parenthesis symbol to global string "term". There will be a space after it.
-    @return 0 if everything goes well
-    '''
+
     global term
     term += '( '
     return 0
 
-
+##
+# @brief Function that adds closing parenthesis symbol to global string "term". There will be a space after it.
+# @return 0 if everything goes well
 def rightpar_pressed():
-    '''
-    @brief Function that adds closing parenthesis symbol to global string "term". There will be a space after it.
-    @return 0 if everything goes well
-    '''
     global term
     term += ' )'
     return 0
 
+##
+# @brief Function that splits string in global term at each space and appends these parts to a list.
+# @return parts list of elements, that were separated by spaces in global term
 def parse():
-    '''
-    @brief Function that splits string in global term at each space and appends these parts to a list.
-    @return parts list of elements, that were separated by spaces in global term
-    '''
+
     parts = []
     for item in term.split(' '):
         parts.append(item)
     return parts
 
-
+##
+# @brief Function that adds opening parenthesis symbol to global string "term". There will be a space after it.
+# @param list list, which we want to check for mathematical validity
+# @raises ValueError if param list is not valid
+# @return 0 if everything goes well, sets term equal to Error and raises ValueError if not
 def is_valid(list):
-    '''
-    @brief Function that adds opening parenthesis symbol to global string "term". There will be a space after it.
-    @param list list, which we want to check for mathematical validity
-    @raises ValueError if param list is not valid
-    @return 0 if everything goes well, sets term equal to Error and raises ValueError if not
-    '''
+
     operators = ['+', '-', '*', '/', '√', '!', 'abs', '^']  #list of possible operators
     global term
     index = -1
@@ -159,14 +150,14 @@ def is_valid(list):
             raise ValueError
     return 0
 
+##
+# @brief Checks, if there are valid parentheses combinations in string.
+# @param src list in which we want to check parentheses
+# @raises ValueError when the parentheses are written in wrong way
+# @return d dictionary containing tuples of two numbers. First number is index of opening parentheses, the other one
+# is index of closing parentheses.
 def find_matching_par(src):
-    '''
-    @brief Checks, if there are valid parentheses combinations in string.
-    @param src list in which we want to check parentheses
-    @raises ValueError when the parentheses are written in wrong way
-    @return d dictionary containing tuples of two numbers. First number is index of opening parentheses, the other one
-    is index of closing parentheses.
-    '''
+
     istart = []  # stack of indices of opening parentheses
     d = {}
     global term
@@ -184,15 +175,14 @@ def find_matching_par(src):
         raise ValueError
     return d
 
-
+##
+# @brief Main function for evaluating the string in term. Recursively removes parenthesis and evaluates string in term.
+# @param source list of items to evaluate
+# @warning might crash the program on unexpected input
+# @raises ValueError if there was ValueError raised during the process
+# @return simplest[0] first item in a final string, which in the last phase contains only the result.
 def get_res(source):
-    '''
-    @brief Main function for evaluating the string in term. Recursively removes parenthesis and evaluates string in term.
-    @param source list of items to evaluate
-    @warning might crash the program on unexpected input
-    @raises ValueError if there was ValueError raised during the process
-    @return simplest[0] first item in a final string, which in the last phase contains only the result.
-    '''
+
     for item in source:
         if item not in [' ', '', '!', 'abs', '√', '*', '/', '^', '+', '-', '(', ')']:
             if not is_number(item):
@@ -310,26 +300,26 @@ def get_res(source):
         except ValueError:
             raise ValueError
 
+##
+# @brief Function that checks, if there is a number in argument.
+# @param s string to check
+# @return True if s is a number, False otherwise
 def is_number(s):
-    '''
-    @brief Function that checks, if there is a number in argument.
-    @param s string to check
-    @return True if s is a number, False otherwise
-    '''
+
     try:
         float(s)
         return True
     except ValueError:
         return False
 
+##
+# @brief Function that is called by pressing = in calculator. It calls the parsing function and gives its output to
+# get_res as an argument. It puts the result to global res and returns it in proper format. It sets 1.0 to 1. and
+# if there is only a number in term, it becomes the result. It also checks for errors.
+# @raises ValueError if there was a ValueError in get_res
+# @return res - overwriten global res, containing the result of string in global term
 def result():
-    '''
-    @brief Function that is called by pressing = in calculator. It calls the parsing function and gives its output to
-    get_res as an argument. It puts the result to global res and returns it in proper format. It sets 1.0 to 1. and
-    if there is only a number in term, it becomes the result. It also checks for errors.
-    @raises ValueError if there was a ValueError in get_res
-    @return res - overwriten global res, containing the result of string in global term
-    '''
+
     global res
     global term
     source = parse()
