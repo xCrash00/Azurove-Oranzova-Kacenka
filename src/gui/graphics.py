@@ -37,33 +37,56 @@ class Graphics(QWidget):
         self.equation.setFont(QtGui.QFont('Arial', 15))
         self.display.setFont(QtGui.QFont('SansSerif', 35))
 
-        ## @var butn1
-        # button 1
+        ## button 1
         self.btn1 = QPushButton("1", self)
-        self.btn2 = QPushButton("2", self)  # @var button 2
-        self.btn3 = QPushButton("3", self)  # @var button 3
-        self.btn4 = QPushButton("4", self)  # @var button 4
-        self.btn5 = QPushButton("5", self)  # @var button 5
-        self.btn6 = QPushButton("6", self)  # @var button 6
-        self.btn7 = QPushButton("7", self)  # @var button 7
-        self.btn8 = QPushButton("8", self)  # @var button 8
-        self.btn9 = QPushButton("9", self)  # @var button 9
-        self.btn0 = QPushButton("0", self)  # @var button 0
-        self.btndot = QPushButton(".", self)  # @var button dot
-        self.btnfact = QPushButton("!", self)  # @var button factorial
-        self.btnce = QPushButton("CE", self)  # @var button CE
-        self.btnadd = QPushButton("+", self)  # @var button addition
-        self.btnsub = QPushButton("-", self)  # @var button substitution
-        self.btnmul = QPushButton("*", self)  # @var button multiply
-        self.btndiv = QPushButton("/", self)  # @var button division
-        self.btnLbracket = QPushButton("(", self)  # @var button (
-        self.btnRbracket = QPushButton(")", self)  # @var button )
-        self.btnc = QPushButton("C", self)  # @var button C
-        self.btnabs = QPushButton("abs", self)  # @var button abs
-        self.btnsqrt = QPushButton("√", self)  # @var button sqrt
-        self.btnneg = QPushButton("neg", self)  # @var button neg
-        self.btnpow = QPushButton("^", self)  # @var button power
-        self.btneq = QPushButton("=", self)  # @var button eq
+        ## button 2
+        self.btn2 = QPushButton("2", self)
+        ## button 3
+        self.btn3 = QPushButton("3", self)
+        ## button 4
+        self.btn4 = QPushButton("4", self)
+        ## button 5
+        self.btn5 = QPushButton("5", self)
+        ## button 6
+        self.btn6 = QPushButton("6", self)
+        ## button 7
+        self.btn7 = QPushButton("7", self)
+        ## button 8
+        self.btn8 = QPushButton("8", self)
+        ## button 9
+        self.btn9 = QPushButton("9", self)
+        ## button 0
+        self.btn0 = QPushButton("0", self)
+        ## button dot
+        self.btndot = QPushButton(".", self)
+        ## button factorial
+        self.btnfact = QPushButton("!", self)
+        ## button CE
+        self.btnce = QPushButton("CE", self)
+        ## button addition
+        self.btnadd = QPushButton("+", self)
+        ## button substitution
+        self.btnsub = QPushButton("-", self)
+        ## button multiply
+        self.btnmul = QPushButton("*", self)
+        ## button division
+        self.btndiv = QPushButton("/", self)
+        ## button (
+        self.btnLbracket = QPushButton("(", self)
+        ## button )
+        self.btnRbracket = QPushButton(")", self)
+        ## button C
+        self.btnc = QPushButton("C", self)
+        ## button abs
+        self.btnabs = QPushButton("abs", self)
+        ## button sqrt
+        self.btnsqrt = QPushButton("√", self)
+        ## button neg
+        self.btnneg = QPushButton("neg", self)
+        ## button power
+        self.btnpow = QPushButton("^", self)
+        ## button eq
+        self.btneq = QPushButton("=", self)
 
         self.equation.move(0, 0)
         self.display.move(0, 30)
