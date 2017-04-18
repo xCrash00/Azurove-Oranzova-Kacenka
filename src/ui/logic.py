@@ -193,6 +193,12 @@ def get_res(source):
     @raises ValueError if there was ValueError raised during the process
     @return simplest[0] first item in a final string, which in the last phase contains only the result.
     '''
+    for item in source:
+        if item not in [' ', '', '!', 'abs', '√', '*', '/', '^', '+', '-', '(', ')']:
+            if not is_number(item):
+                raise ValueError
+    if len(source) == 1:
+        return source[0]
     try:
         find_matching_par(source)
     except ValueError:
@@ -338,6 +344,8 @@ def result():
         except ValueError:
             term = 'Error'
             return res
-    if res.is_integer():
-        res = int(res)
+    if is_number(res):
+        res = float(res)
+        if res.is_integer():
+            res = int(res)
     return res
