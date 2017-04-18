@@ -14,21 +14,21 @@ from PyQt5.QtWidgets import (QWidget, QApplication, QPushButton, QLabel)
 from src.ui import logic
 
 
+##
+# @brief Class Graphics - contains methods that create GUI for calculator
 class Graphics(QWidget):
-    """
-    @brief Class Graphics - contains methods that create GUI for calculator
-    """
+
+    ##
+    # @brief Constructor __init__ initialize objects from class QWidget
     def __init__(self):
-        ##
-        # @brief Constructor __init__ initialize objects from class QWidget
 
         super().__init__()
 
         self.initUI()
 
+    ##
+    # @brief Create graphics look and print it as created window
     def initUI(self):
-        ##
-        # @brief Create graphics look and print it as created window
 
         self.equation = QLabel(str(logic.term), self)
         self.display = QLabel(str(logic.res), self)
@@ -190,10 +190,10 @@ class Graphics(QWidget):
         self.show()
 
 
+    ##
+    # @brief Watching signal keyPressEvent and simulate click on specific button
+    # @param qKeyEvent - signal from keyboard
     def keyPressEvent(self, qKeyEvent):
-        ##
-        # @brief Watching signal keyPressEvent and simulate click on specific button
-        # @param qKeyEvent - signal from keyboard
 
         key = qKeyEvent.key()
         # keys
@@ -263,16 +263,16 @@ class Graphics(QWidget):
             pass
 
 
+    ##
+    # @brief Function connect logic with GUI
+    # @param name - Value sent on event from GUI
+    # @return - Inside function, that compare values
     def make_handleButton(self, name):
-        ##
-        # @brief Function connect logic with GUI
-        # @param name - Value sent on event from GUI
-        # @return - Inside function, that compare values
 
+        ##
+        # @brief Compare string sent on signal 'clicked' with value and calls appropriate function from logic
         def handleButton():
-            ##
-            # @brief Compare string sent on signal 'clicked' with value and calls appropriate function from logic
-            
+
             if name in ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '.']:
                 logic.num_pressed(name)
             elif name == 'Neg':
