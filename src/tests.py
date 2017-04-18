@@ -1,5 +1,8 @@
 #!/usr/bin/env python3
-
+##
+# @file tests.py
+# File containing functional tests for mathematical library.
+#
 import unittest
 import math_lib
 
