@@ -13,7 +13,6 @@ from PyQt5.QtWidgets import (QWidget, QApplication, QPushButton, QLabel)
 
 from src.ui import logic
 
-
 ##
 # @brief Class Graphics - contains methods that create GUI for calculator
 class Graphics(QWidget):
