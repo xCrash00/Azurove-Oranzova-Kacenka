@@ -1,5 +1,10 @@
 #!/usr/bin/env python3
 
+##
+# @file logic.py
+# File containing definitions of functions called by calculator.
+#
+
 from src import math_lib
 
 global term
