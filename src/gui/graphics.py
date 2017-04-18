@@ -37,8 +37,9 @@ class Graphics(QWidget):
         self.equation.setFont(QtGui.QFont('Arial', 15))
         self.display.setFont(QtGui.QFont('SansSerif', 35))
 
-        ## @var button 1
-        self.btn1 = QPushButton("1", self)  
+        ## @var butn1
+        # button 1
+        self.btn1 = QPushButton("1", self)
         self.btn2 = QPushButton("2", self)  # @var button 2
         self.btn3 = QPushButton("3", self)  # @var button 3
         self.btn4 = QPushButton("4", self)  # @var button 4
