@@ -1,10 +1,15 @@
 #!/usr/bin/python3
 
+##
+# @file graphics.py
+# File containing definitions of all buttons and connecting with logic.
+#
+
 import sys
 
 from PyQt5 import QtCore
 from PyQt5 import QtGui
-from PyQt5.QtWidgets import (QWidget, QApplication, QPushButton, QLabel, QFormLayout, QLineEdit)
+from PyQt5.QtWidgets import (QWidget, QApplication, QPushButton, QLabel)
 
 from src.ui import logic
 
@@ -14,25 +19,24 @@ class Graphics(QWidget):
     @brief Class Graphics - contains methods that create GUI for calculator
     """
     def __init__(self):
-        """
-        @brief Constructor __init__ initialize objects from class QWidget
-        """
+        ##
+        # @brief Constructor __init__ initialize objects from class QWidget
+
         super().__init__()
 
         self.initUI()
 
     def initUI(self):
-        """
-        @brief Create graphics look and print it as created window
-        """
+        ##
+        # @brief Create graphics look and print it as created window
 
         self.equation = QLabel(str(logic.term), self)
         self.display = QLabel(str(logic.res), self)
         self.equation.setAlignment(QtCore.Qt.AlignRight)
         self.display.setAlignment(QtCore.Qt.AlignRight)
 
-        self.display.setFont(QtGui.QFont('SansSerif', 35))
         self.equation.setFont(QtGui.QFont('Arial', 15))
+        self.display.setFont(QtGui.QFont('SansSerif', font_size))
 
 
         self.btn1 = QPushButton("1", self)
@@ -187,10 +191,10 @@ class Graphics(QWidget):
 
 
     def keyPressEvent(self, qKeyEvent):
-        """
-        @brief Watching signal keyPressEvent and simulate click on specific button
-        @param qKeyEvent - signal from keyboard
-        """
+        ##
+        # @brief Watching signal keyPressEvent and simulate click on specific button
+        # @param qKeyEvent - signal from keyboard
+
         key = qKeyEvent.key()
         # keys
         if key == QtCore.Qt.Key_0:
@@ -260,15 +264,15 @@ class Graphics(QWidget):
 
 
     def make_handleButton(self, name):
-        """
-        @brief Function connect logic with GUI
-        @param name - Value sent on event from GUI
-        @return - Inside function, that compare values
-        """
+        ##
+        # @brief Function connect logic with GUI
+        # @param name - Value sent on event from GUI
+        # @return - Inside function, that compare values
+
         def handleButton():
-            """
-            @brief Compare string sent on signal 'clicked' with value and calls appropriate function from logic
-            """
+            ##
+            # @brief Compare string sent on signal 'clicked' with value and calls appropriate function from logic
+            
             if name in ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '.']:
                 logic.num_pressed(name)
             elif name == 'Neg':
