@@ -361,8 +361,11 @@ def result():
     source = parse()
     if is_number(term):
         res = term
+        if str(res)[0] == 0:
+            print('je tu nula')
         return res
     elif term == '':
+        res = 0
         return res
     else:
         try:
@@ -377,15 +380,23 @@ def result():
             res = int(res)
     return res
 
+def del_num():
+    global term
+    numbers = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '0', '.']
+    if term[-1] in numbers:
+        term = term[:-1]
+
 def cut_res():
     global res
+    velikostokna = 17
     lenght = len(res)
     print(lenght)
     dotind = -1
     if '.' in str(res):
         dotind = res.index('.')
-    if lenght > 18 and dotind != -1:
-        if dotind < 18:
-            out = str(res)[0:18]
-            return out
-
+    if lenght > velikostokna and dotind != -1:
+        if dotind < velikostokna:
+            res = str(res)[0:velikostokna]
+    elif lenght > velikostokna and dotind == -1:
+        res = res 'ahoj'
+        return res
