@@ -60,7 +60,7 @@ class Graphics(QWidget):
         ## button dot
         self.btndot = QPushButton(".", self)
         ## button factorial
-        self.btnfact = QPushButton("x!", self)
+        self.btnfact = QPushButton("!", self)
         ## button CE
         self.btnce = QPushButton("CE", self)
         ## button addition
@@ -323,9 +323,18 @@ class Graphics(QWidget):
             elif name == '=':
                 logic.result()
 
-                
-            if len(str(logic.res)) > 9:
+            size = len(str(logic.res))/11
+            print(size)
+            if size <= 1:
+                pass
+            elif size > 1 and size <= 1.2:
+                font_size = 30
+            elif size > 1.2 and size <= 1.5:
+                font_size = 25
+            elif size > 1.5 and size <= 1.8:
                 font_size = 20
+            else:
+                logic.cut_res()
             self.display.setFont(QtGui.QFont('SansSerif', font_size))
             self.equation.setText(str(logic.term))
             self.display.setText(str(logic.res))
