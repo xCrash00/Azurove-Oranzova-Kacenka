@@ -360,7 +360,8 @@ def result():
     global term
     source = parse()
     if is_number(term):
-        res = float(term)
+        res = term
+        return res
     elif term == '':
         return res
     else:
@@ -375,3 +376,16 @@ def result():
         if res.is_integer():
             res = int(res)
     return res
+
+def cut_res():
+    global res
+    lenght = len(res)
+    print(lenght)
+    dotind = -1
+    if '.' in str(res):
+        dotind = res.index('.')
+    if lenght > 18 and dotind != -1:
+        if dotind < 18:
+            out = str(res)[0:18]
+            return out
+
