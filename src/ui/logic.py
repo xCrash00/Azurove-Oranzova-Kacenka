@@ -7,8 +7,13 @@
 
 from src import math_lib
 
+##
+# @brief global variable containing input from user to be calculated
+# functions in this file work with and modify the content of this variable
 global term
 term = ""
+##
+# @brief global variable in which the result of term will be stored
 global res
 res = 0
 
@@ -88,7 +93,7 @@ def ce_pressed():
 
     global term
     operators = ['+', '-', '*', '/', '√', '!', 'abs', '^', ')', '(']
-    numbers = ['1','2','3','4','5','6','7','8','9','0']
+    numbers = ['1','2','3','4','5','6','7','8','9','0','.']
     length = len(term)
     if length == 0:
         return 0
