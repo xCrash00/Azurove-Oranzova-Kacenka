@@ -230,6 +230,7 @@ def get_res(source):
     except ValueError:
         raise ValueError
     par = sorted(list(find_matching_par(source).items()))
+
     if par == []:
         try:
             is_valid(source)
@@ -241,28 +242,31 @@ def get_res(source):
 
         simpler = []
         skip = False
+        index = -1
+        index2 = -1
         for item in source:
             if skip == True:
                 skip = False
                 continue
             simpler.append(item)
+            index += 1
+            index2 += 1
             if item in op_highprio:
-                index = simpler.index(item)
+                #index = simpler.index(item)
                 if item == '!':
                     value = simpler[index - 1]
                     simpler[index - 1] = math_lib.fact(float(value))
                     del simpler[index]
+                    index -= 1
                     print(simpler)
                 elif item == 'abs':
                     value = simpler[index - 1]
                     simpler[index - 1] = math_lib.abs(float(value))
                     del simpler[index]
+                    index -= 1
                     print(simpler)
                 else:
-                    index = simpler.index(item)
-                    index2 = source.index(item)
                     value1 = source[index + 1]
-                    print(index)
                     if simpler[index - 1] == '':
                         simpler = simpler[:-2]
                         simpler.append(math_lib.sqrt(float(value1)))
@@ -274,17 +278,25 @@ def get_res(source):
                     skip = True
         simplerer = []
         skip = False
+        index = -1
+        index2 = -1
         for item in simpler:
+            index += 1
             if skip == True:
                 skip = False
                 continue
             simplerer.append(item)
+            print(simplerer)
+
+            index2 += 1
             if item in op_prio:
-                index = simpler.index(item)
-                index2 = simplerer.index(item)
                 value1 = simplerer[index2 - 1]
                 value2 = simpler[index + 1]
                 simplerer = simplerer[:-2]
+                index2 -= 1
+                print(simplerer)
+                print(index)
+                print(index2)
                 if item == '*':
                     simplerer.append(math_lib.mul(float(value1), float(value2)))
                     print(simplerer)
@@ -299,17 +311,20 @@ def get_res(source):
                     skip = True
         simplest = []
         skip1 = False
+        index = -1
+        index2 = -1
         for item in simplerer:
+            index += 1
             if skip1 == True:
                 skip1 = False
                 continue
             simplest.append(item)
+            index2 += 1
             if item in op:
-                ind = simplerer.index(item)
-                ind2 = simplest.index(item)
-                value1 = simplest[ind2 - 1]
-                value2 = simplerer[ind + 1]
+                value1 = simplest[index2 - 1]
+                value2 = simplerer[index + 1]
                 simplest = simplest[:-2]
+                index2 -= 1
                 if item == '+':
                     simplest.append(math_lib.add(float(value1), float(value2)))
                     print(simplest)
@@ -361,8 +376,8 @@ def result():
     source = parse()
     if is_number(term):
         res = term
-        if str(res)[0] == 0:
-            print('je tu nula')
+        if int(res) + 5 == 5:
+            res = 0
         return res
     elif term == '':
         res = 0
@@ -380,7 +395,7 @@ def result():
             res = int(res)
     return res
 
-def del_num():
+def del_num(    ):
     global term
     numbers = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '0', '.']
     if term[-1] in numbers:
@@ -388,6 +403,7 @@ def del_num():
 
 def cut_res():
     global res
+    res = str(res)
     velikostokna = 17
     lenght = len(res)
     print(lenght)
@@ -397,6 +413,16 @@ def cut_res():
     if lenght > velikostokna and dotind != -1:
         if dotind < velikostokna:
             res = str(res)[0:velikostokna]
-    elif lenght > velikostokna and dotind == -1:
-        res = res 'ahoj'
+            lenght = len(res)
+    if lenght > velikostokna:
+        num=0
+        first=str(res)[0]
+        num = lenght - 1
+        if num < 10:
+            new = first + '.' + str(res)[1:velikostokna - 4] + 'e+' + str(num)
+        elif num < 100:
+            new = first + '.' + str(res)[1:velikostokna - 5] + 'e+' + str(num)
+        else:
+            new = first + '.' + str(res)[1:velikostokna - 6] + 'e+' + str(num)
+        res = new
         return res
