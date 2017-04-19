@@ -361,8 +361,11 @@ def result():
     source = parse()
     if is_number(term):
         res = term
+        if str(res)[0] == 0:
+            print('je tu nula')
         return res
     elif term == '':
+        res = 0
         return res
     else:
         try:
@@ -384,8 +387,7 @@ def cut_res():
     dotind = -1
     if '.' in str(res):
         dotind = res.index('.')
-    if lenght > 18 and dotind != -1:
-        if dotind < 18:
-            out = str(res)[0:18]
-            return out
-
+    if lenght > 17 and dotind != -1:
+        if dotind < 17:
+            res = str(res)[0:17]
+            print(res)
