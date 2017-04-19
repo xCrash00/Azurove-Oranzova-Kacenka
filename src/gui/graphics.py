@@ -324,7 +324,6 @@ class Graphics(QWidget):
                 logic.result()
 
             size = len(str(logic.res))/11
-            print(size)
             if size <= 1:
                 pass
             elif size > 1 and size <= 1.2:
