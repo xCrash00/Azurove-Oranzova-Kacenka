@@ -296,7 +296,7 @@ class Graphics(QWidget):
         # @brief Compare string sent on signal 'clicked' with value and calls appropriate function from logic
         def handleButton():
 
-            font_size = 36
+            font_size = 35
 
             if name in ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '.']:
                 logic.num_pressed(name)
@@ -323,7 +323,7 @@ class Graphics(QWidget):
             elif name == '=':
                 logic.result()
 
-            size = len(str(logic.res))/11
+            size = len(str(logic.res))/9
             if size <= 1:
                 pass
             elif size > 1 and size <= 1.2:
