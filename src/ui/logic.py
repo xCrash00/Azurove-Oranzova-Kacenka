@@ -82,11 +82,36 @@ def c_pressed():
 
 ##
 # @brief Function that removes last given sequence from global term. It removes a single operator, or continuous
-# numbers.
+# numbers, or Error from term.
 # @return 0 if everything goes well
 def ce_pressed():
 
     global term
+    operators = ['+', '-', '*', '/', '√', '!', 'abs', '^', ')', '(']
+    numbers = ['1','2','3','4','5','6','7','8','9','0']
+    length = len(term)
+    if length == 0:
+        return 0
+    if term == 'Error':
+        term = ''
+        return 0
+    if term[-1] == ' ':
+        term = term[:-1]
+    if term[-1] in operators:
+        term = term[:-2]
+    elif term[-1] in numbers:
+        while term[-1] in numbers:
+            if len(term) == 1:
+                if term[-1] in numbers:
+                    term = ''
+                    return 0
+                else:
+                    return 0
+            term = term[:-1]
+
+
+
+    """
     if len(term) == 0:  # if there is nothing in term, result is 0
         return 0
     if term[-1] == ' ':  #if the string ends with space, remove it
@@ -99,6 +124,7 @@ def ce_pressed():
     if term[-1] == ' ':  #if there still is a space, remove it
         term = term[:-1]
     return 0
+    """
 
 ##
 # @brief Function that adds opening parenthesis symbol to global string "term". There will be a space after it.
