@@ -88,6 +88,8 @@ class Graphics(QWidget):
         ## button eq
         self.btneq = QPushButton("=", self)
 
+        self.equation.setStyleSheet("color: white; background-color: grey")
+
         self.btn1.setStyleSheet("background-color: gray")
         self.btn2.setStyleSheet("background-color: gray")
         self.btn3.setStyleSheet("background-color: gray")
