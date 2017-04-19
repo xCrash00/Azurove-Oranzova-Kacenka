@@ -23,6 +23,7 @@ class Graphics(QWidget):
 
         super().__init__()
 
+
         self.initUI()
 
     ##
@@ -87,19 +88,21 @@ class Graphics(QWidget):
         self.btnpow = QPushButton("^", self)
         ## button eq
         self.btneq = QPushButton("=", self)
+        ## button delete last num
+        self.btn_del_num = QPushButton("", self)
 
         self.equation.setStyleSheet("color: white; background-color: grey")
 
-        self.btn1.setStyleSheet("background-color: gray")
-        self.btn2.setStyleSheet("background-color: gray")
-        self.btn3.setStyleSheet("background-color: gray")
-        self.btn4.setStyleSheet("background-color: gray")
-        self.btn5.setStyleSheet("background-color: gray")
-        self.btn6.setStyleSheet("background-color: gray")
-        self.btn7.setStyleSheet("background-color: gray")
-        self.btn8.setStyleSheet("background-color: gray")
-        self.btn9.setStyleSheet("background-color: gray")
-        self.btn0.setStyleSheet("background-color: gray")
+        self.btn1.setStyleSheet("background-color: gray;")
+        self.btn2.setStyleSheet("background-color: gray;")
+        self.btn3.setStyleSheet("background-color: gray;")
+        self.btn4.setStyleSheet("background-color: gray;")
+        self.btn5.setStyleSheet("background-color: gray;")
+        self.btn6.setStyleSheet("background-color: gray;")
+        self.btn7.setStyleSheet("background-color: gray;")
+        self.btn8.setStyleSheet("background-color: gray;")
+        self.btn9.setStyleSheet("background-color: gray;")
+        self.btn0.setStyleSheet("background-color: gray;")
 
         self.btndot.setStyleSheet("background-color: silver")
         self.btnfact.setStyleSheet("background-color: silver")
@@ -149,8 +152,8 @@ class Graphics(QWidget):
         self.btnpow.move(240, 270)
         self.btneq.move(300, 270)
 
-        self.equation.setMinimumWidth(358)
-        self.display.setMinimumWidth(298)
+        self.equation.setMinimumWidth(360)
+        self.display.setMinimumWidth(300)
         self.btn1.setMaximumWidth(60)
         self.btn2.setMaximumWidth(60)
         self.btn3.setMaximumWidth(60)
@@ -176,6 +179,7 @@ class Graphics(QWidget):
         self.btnneg.setMaximumWidth(60)
         self.btnpow.setMaximumWidth(60)
         self.btneq.setMaximumWidth(60)
+        self.btn_del_num.setMaximumWidth(0)
 
         self.equation.setMinimumHeight(30)
         self.display.setMinimumHeight(60)
@@ -233,6 +237,7 @@ class Graphics(QWidget):
         self.btnLbracket.clicked.connect(self.make_handleButton('('))
         self.btnRbracket.clicked.connect(self.make_handleButton(')'))
         self.btnpow.clicked.connect(self.make_handleButton('Pow'))
+        self.btn_del_num.clicked.connect(self.make_handleButton('del_num'))
 
 
         self.setFixedSize(360, 330)
@@ -286,7 +291,7 @@ class Graphics(QWidget):
         elif key == QtCore.Qt.Key_Slash:
             self.btndiv.click()
         elif key == QtCore.Qt.Key_Backspace:
-            self.btnce.click()
+            self.btn_del_num.click()
         elif key == QtCore.Qt.Key_C:
             self.btnc.click()
         elif key == QtCore.Qt.Key_ParenLeft:
@@ -349,6 +354,8 @@ class Graphics(QWidget):
                 logic.leftpar_pressed()
             elif name == ')':
                 logic.rightpar_pressed()
+            elif name == 'del_num':
+                logic.del_num()
             elif name == '=':
                 logic.result()
 
@@ -365,7 +372,7 @@ class Graphics(QWidget):
                 font_size = 20
                 logic.cut_res()
             self.display.setFont(QtGui.QFont('SansSerif', font_size))
-            self.equation.setText(str(logic.term))
+            self.equation.setText(str(logic.term+str(" ")))
             self.display.setText(str(logic.res))
         return handleButton
 
