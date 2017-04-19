@@ -333,6 +333,7 @@ class Graphics(QWidget):
             elif size > 1.5 and size <= 1.8:
                 font_size = 20
             else:
+                font_size = 20
                 logic.cut_res()
             self.display.setFont(QtGui.QFont('SansSerif', font_size))
             self.equation.setText(str(logic.term))
