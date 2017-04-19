@@ -380,7 +380,7 @@ def result():
             res = int(res)
     return res
 
-def del_num:
+def del_num():
     global term
     numbers = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '0', '.']
     if term[-1] in numbers:
