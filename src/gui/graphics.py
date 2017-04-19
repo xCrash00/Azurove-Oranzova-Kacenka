@@ -60,7 +60,7 @@ class Graphics(QWidget):
         ## button dot
         self.btndot = QPushButton(".", self)
         ## button factorial
-        self.btnfact = QPushButton("!", self)
+        self.btnfact = QPushButton("x!", self)
         ## button CE
         self.btnce = QPushButton("CE", self)
         ## button addition
@@ -296,6 +296,8 @@ class Graphics(QWidget):
         # @brief Compare string sent on signal 'clicked' with value and calls appropriate function from logic
         def handleButton():
 
+            font_size = 36
+
             if name in ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '.']:
                 logic.num_pressed(name)
             elif name == 'Neg':
@@ -320,6 +322,11 @@ class Graphics(QWidget):
                 logic.rightpar_pressed()
             elif name == '=':
                 logic.result()
+
+                
+            if len(str(logic.res)) > 9:
+                font_size = 20
+            self.display.setFont(QtGui.QFont('SansSerif', font_size))
             self.equation.setText(str(logic.term))
             self.display.setText(str(logic.res))
         return handleButton
