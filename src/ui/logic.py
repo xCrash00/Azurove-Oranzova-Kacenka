@@ -380,14 +380,23 @@ def result():
             res = int(res)
     return res
 
+def del_num:
+    global term
+    numbers = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '0', '.']
+    if term[-1] in numbers:
+        term = term[:-1]
+
 def cut_res():
     global res
+    velikostokna = 17
     lenght = len(res)
     print(lenght)
     dotind = -1
     if '.' in str(res):
         dotind = res.index('.')
-    if lenght > 17 and dotind != -1:
-        if dotind < 17:
-            res = str(res)[0:17]
-            print(res)
+    if lenght > velikostokna and dotind != -1:
+        if dotind < velikostokna:
+            res = str(res)[0:velikostokna]
+    elif lenght > velikostokna and dotind == -1:
+        res = res 'ahoj'
+        return res
