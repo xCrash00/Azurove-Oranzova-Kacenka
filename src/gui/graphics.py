@@ -93,16 +93,18 @@ class Graphics(QWidget):
         ## button delete last num
         self.btn_del_num = QPushButton("", self)
 
-        color_light = "silver"
+        color_light = "#BBB"
         color_dark = "#333"
 
-        self.equation.setStyleSheet("color: white; background-color: " + str(color_light))
+
+        self.equation.setStyleSheet("color: #333; background-color: " + str(color_light))
         self.display.setStyleSheet("background-color: " + str(color_light) + "; border-bottom: 1px solid black;")
 
         self.setStyleSheet("background-color: " + str(color_dark))
 
         style_numbs = "background-color: transparent; font-size: 20px; color: white"
         style_func = "background-color: " + str(color_light) + "; font-size: 20px; margin: 0 100 0 100; border: 1"
+        style_eq = "background-color: #2bb62b; font-size: 20px; margin: 0 100 0 100; border: 1"
 
         self.btn1.setStyleSheet(style_numbs)
         self.btn2.setStyleSheet(style_numbs)
@@ -129,7 +131,8 @@ class Graphics(QWidget):
         self.btnabs.setStyleSheet(style_func)
         self.btnsqrt.setStyleSheet(style_func)
         self.btnpow.setStyleSheet(style_func)
-        self.btneq.setStyleSheet(style_func)
+
+        self.btneq.setStyleSheet(style_eq)
 
 
         self.equation.move(0, 0)
