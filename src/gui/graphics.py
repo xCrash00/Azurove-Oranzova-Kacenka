@@ -93,12 +93,12 @@ class Graphics(QWidget):
         ## button delete last num
         self.btn_del_num = QPushButton("", self)
 
-        color_light = "#BBB"
+        color_light = "#666"
         color_dark = "#333"
 
 
-        self.equation.setStyleSheet("color: #333; background-color: " + str(color_light))
-        self.display.setStyleSheet("background-color: " + str(color_light) + "; border-bottom: 1px solid black;")
+        self.equation.setStyleSheet("color: #222; background-color: #EFEFEF")
+        self.display.setStyleSheet("background-color: #EFEFEF; border-bottom: 1px solid black;")
 
         self.setStyleSheet("background-color: " + str(color_dark))
 
