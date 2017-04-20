@@ -11,6 +11,8 @@ from PyQt5 import QtCore
 from PyQt5 import QtGui
 from PyQt5.QtWidgets import (QWidget, QApplication, QPushButton, QLabel)
 
+from PyQt5 import *
+
 from src.ui import logic
 
 ##
@@ -91,37 +93,38 @@ class Graphics(QWidget):
         ## button delete last num
         self.btn_del_num = QPushButton("", self)
 
-        self.equation.setStyleSheet("color: white; background-color: #888")
-        self.display.setStyleSheet("background-color: silver")
 
-        self.setStyleSheet("background-color: #666")
+        self.equation.setStyleSheet("color: white; background-color: silver; border-bottom: 1px solid black")
+        self.display.setStyleSheet("background-color: silver; border-bottom: 1px solid black; border-right: 1px solid black")
 
-        self.btn1.setStyleSheet("background-color: transparent; font-size: 20px")
-        self.btn2.setStyleSheet("background-color: transparent; font-size: 20px")
-        self.btn3.setStyleSheet("background-color: transparent; font-size: 20px")
-        self.btn4.setStyleSheet("background-color: transparent; font-size: 20px")
-        self.btn5.setStyleSheet("background-color: transparent; font-size: 20px")
-        self.btn6.setStyleSheet("background-color: transparent; font-size: 20px")
-        self.btn7.setStyleSheet("background-color: transparent; font-size: 20px")
-        self.btn8.setStyleSheet("background-color: transparent; font-size: 20px")
-        self.btn9.setStyleSheet("background-color: transparent; font-size: 20px")
-        self.btn0.setStyleSheet("background-color: transparent; font-size: 20px")
-        self.btndot.setStyleSheet("background-color: transparent; font-size: 20px")
+        self.setStyleSheet("background-color: #333")
 
-        self.btnfact.setStyleSheet("background-color: #888; font-size: 20px")
-        self.btnce.setStyleSheet("background-color: #888; font-size: 20px")
-        self.btnadd.setStyleSheet("background-color: #888; font-size: 20px")
-        self.btnsub.setStyleSheet("background-color: #888; font-size: 20px")
-        self.btnmul.setStyleSheet("background-color: #888; font-size: 20px")
-        self.btndiv.setStyleSheet("background-color: #888; font-size: 20px")
-        self.btnLbracket.setStyleSheet("background-color: #888; font-size: 20px")
-        self.btnRbracket.setStyleSheet("background-color: #888; font-size: 20px")
-        self.btnc.setStyleSheet("background-color: #888; font-size: 20px")
-        self.btnabs.setStyleSheet("background-color: #888; font-size: 20px")
-        self.btnsqrt.setStyleSheet("background-color: #888; font-size: 20px")
-        self.btnneg.setStyleSheet("background-color: #888; font-size: 20px")
-        self.btnpow.setStyleSheet("background-color: #888; font-size: 20px")
-        self.btneq.setStyleSheet("background-color: #888; font-size: 20px")
+        self.btn1.setStyleSheet("background-color: transparent; font-size: 20px; color: #BBB;")
+        self.btn2.setStyleSheet("background-color: transparent; font-size: 20px; color: #BBB;")
+        self.btn3.setStyleSheet("background-color: transparent; font-size: 20px; color: #BBB;")
+        self.btn4.setStyleSheet("background-color: transparent; font-size: 20px; color: #BBB;")
+        self.btn5.setStyleSheet("background-color: transparent; font-size: 20px; color: #BBB;")
+        self.btn6.setStyleSheet("background-color: transparent; font-size: 20px; color: #BBB;")
+        self.btn7.setStyleSheet("background-color: transparent; font-size: 20px; color: #BBB;")
+        self.btn8.setStyleSheet("background-color: transparent; font-size: 20px; color: #BBB;")
+        self.btn9.setStyleSheet("background-color: transparent; font-size: 20px; color: #BBB;")
+        self.btn0.setStyleSheet("background-color: transparent; font-size: 20px; color: #BBB;")
+        self.btndot.setStyleSheet("background-color: transparent; font-size: 20px; color: #BBB;")
+
+        self.btnfact.setStyleSheet("background-color: silver; font-size: 20px; margin: 0 100 0 100; border: 1")
+        self.btnce.setStyleSheet("background-color: silver; font-size: 20px; margin: 0 100 0 100; border: 1")
+        self.btnadd.setStyleSheet("background-color: silver; font-size: 20px; margin: 0 100 0 100; border: 1")
+        self.btnsub.setStyleSheet("background-color: silver; font-size: 20px; margin: 0 100 0 100; border: 1")
+        self.btnmul.setStyleSheet("background-color: silver; font-size: 20px; margin: 0 100 0 100; border: 1")
+        self.btndiv.setStyleSheet("background-color: silver; font-size: 20px; margin: 0 100 0 100; border: 1")
+        self.btnLbracket.setStyleSheet("background-color: silver; font-size: 20px; margin: 0 100 0 100; border: 1")
+        self.btnRbracket.setStyleSheet("background-color: silver; font-size: 20px; margin: 0 100 0 100; border: 1")
+        self.btnc.setStyleSheet("background-color: silver; font-size: 20px; margin: 0 100 0 100; border: 1")
+        self.btnabs.setStyleSheet("background-color: silver; font-size: 20px; margin: 0 100 0 100; border: 1")
+        self.btnsqrt.setStyleSheet("background-color: silver; font-size: 20px; margin: 0 100 0 100; border: 1")
+        self.btnneg.setStyleSheet("background-color: silver; font-size: 20px; margin: 0 100 0 100; border: 1")
+        self.btnpow.setStyleSheet("background-color: silver; font-size: 20px; margin: 0 100 0 100; border: 1")
+        self.btneq.setStyleSheet("background-color: silver; font-size: 20px; margin: 0 100 0 100; border: 1")
 
         self.equation.move(0, 0)
         self.display.move(0, 30)
