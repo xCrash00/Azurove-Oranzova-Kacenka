@@ -375,9 +375,15 @@ def result():
     global term
     source = parse()
     if is_number(term):
-        res = term
-        if int(res) + 5 == 5:
-            res = 0
+        res = float(term)
+        if res.is_integer():
+            res = int(res)
+        '''res = term
+        if '.' in term:
+            res = math_lib.add(float(res), float(0))
+            print(res)
+            if float(res) + 5 == 5:
+                res = 0'''
         return res
     elif term == '':
         res = 0
@@ -397,9 +403,21 @@ def result():
 
 def del_num(    ):
     global term
+    operators = ['+', '-', '*', '/', '√', '!', 'abs', '^', ')', '(']
     numbers = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '0', '.']
-    if term[-1] in numbers:
+    length = len(term)
+    if length == 0:
+        return 0
+    if term == 'Error':
+        term = ''
+        return 0
+    if term[-1] == ' ':
         term = term[:-1]
+    if term[-1] in operators:
+        term = term[:-2]
+    elif term[-1] in numbers:
+        term = term[:-1]
+
 
 def cut_res():
     global res
@@ -426,3 +444,4 @@ def cut_res():
             new = first + '.' + str(res)[1:velikostokna - 6] + 'e+' + str(num)
         res = new
         return res
+
