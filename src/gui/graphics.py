@@ -93,7 +93,8 @@ class Graphics(QWidget):
         ## button delete last num
         self.btn_del_num = QPushButton("", self)
 
-        color_light = "#666"
+        color_light = "#666" \
+                      ""
         color_dark = "#333"
 
 
