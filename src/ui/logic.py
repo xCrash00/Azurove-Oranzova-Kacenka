@@ -71,7 +71,13 @@ def sqrt_pressed():
 def negate_pressed():
 
     global term
-    term += '-'
+    if len(term) > 0:
+        if term[-1] == '-':
+            term = term[:-1]
+        else:
+            term += '-'
+    else:
+        term += '-'
     return 0
 
 ##
