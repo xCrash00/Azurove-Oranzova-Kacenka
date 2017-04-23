@@ -1,0 +1,9 @@
+[Desktop Entry]
+Version=3.0
+Type=Application
+Name=kalkulacka
+Comment=asd
+Exec=kalkulator
+Icon=/usr/share/icons/gnome/48x48/apps/calc.png
+Categories=Utility;
+

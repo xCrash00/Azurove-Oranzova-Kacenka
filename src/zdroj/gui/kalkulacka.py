@@ -11,7 +11,7 @@ from PyQt5 import QtCore
 from PyQt5 import QtGui
 from PyQt5.QtWidgets import (QWidget, QApplication, QPushButton, QLabel)
 
-from src.ui import logic
+from kalkulacka import logic
 
 ##
 # @brief Class Graphics - contains methods that create GUI for calculator
@@ -378,10 +378,12 @@ class Graphics(QWidget):
             self.equation.setText(str(logic.term+str(" ")))
             self.display.setText(str(logic.res))
         return handleButton
-
-# startup for app
-if __name__ == '__main__':
+def main():
     app = QApplication(sys.argv)
     app.setStyle("windows")
     ex = Graphics()
     sys.exit(app.exec_())
+    
+# startup for app
+if __name__ == '__main__':
+    main()
