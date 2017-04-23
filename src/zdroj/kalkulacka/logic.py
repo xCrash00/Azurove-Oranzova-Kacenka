@@ -5,7 +5,7 @@
 # File containing definitions of functions called by calculator.
 #
 
-from src.zdroj.kalkulacka import math_lib
+from kalkulacka import math_lib
 
 ##
 # @brief global variable containing input from user to be calculated
