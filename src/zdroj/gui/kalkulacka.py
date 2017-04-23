@@ -11,8 +11,7 @@ from PyQt5 import QtCore
 from PyQt5 import QtGui
 from PyQt5.QtWidgets import (QWidget, QApplication, QPushButton, QLabel)
 
-from src.zdroj.kalkulacka import (logic, math_lib)
-
+from src.zdroj.kalkulacka import logic
 
 
 
