@@ -11,9 +11,9 @@ from PyQt5 import QtCore
 from PyQt5 import QtGui
 from PyQt5.QtWidgets import (QWidget, QApplication, QPushButton, QLabel)
 
-from PyQt5 import *
+from kalkulacka import logic
 
-from src.ui import logic
+
 
 ##
 # @brief Class Graphics - contains methods that create GUI for calculator
@@ -93,8 +93,7 @@ class Graphics(QWidget):
         ## button delete last num
         self.btn_del_num = QPushButton("", self)
 
-        color_light = "#666" \
-                      ""
+        color_light = "#666"
         color_dark = "#333"
 
 
@@ -271,7 +270,6 @@ class Graphics(QWidget):
     # @brief Watching signal keyPressEvent and simulate click on specific button
     # @param qKeyEvent - signal from keyboard
     def keyPressEvent(self, qKeyEvent):
-
         key = qKeyEvent.key()
         # keys
         if key == QtCore.Qt.Key_0:
@@ -301,6 +299,8 @@ class Graphics(QWidget):
         elif key == QtCore.Qt.Key_Return:
             self.btneq.click()
         elif key == QtCore.Qt.Key_Comma:
+            self.btndot.click()
+        elif key == QtCore.Qt.Key_Period:
             self.btndot.click()
         elif key == QtCore.Qt.Key_Plus:
             self.btnadd.click()

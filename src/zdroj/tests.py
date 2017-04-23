@@ -6,7 +6,7 @@
 #
 
 import unittest
-import math_lib
+from kalkulacka import math_lib
 
 ##
 # @brief Class BasicTests - contains easy functional tests
