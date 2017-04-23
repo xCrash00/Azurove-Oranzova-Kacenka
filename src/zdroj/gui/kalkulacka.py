@@ -11,7 +11,10 @@ from PyQt5 import QtCore
 from PyQt5 import QtGui
 from PyQt5.QtWidgets import (QWidget, QApplication, QPushButton, QLabel)
 
-from kalkulacka import logic
+from src.zdroj.kalkulacka import (logic, math_lib)
+
+
+
 
 ##
 # @brief Class Graphics - contains methods that create GUI for calculator
@@ -83,7 +86,7 @@ class Graphics(QWidget):
         ## button sqrt
         self.btnsqrt = QPushButton("√", self)
         ## button neg
-        self.btnneg = QPushButton("neg", self)
+        self.btnneg = QPushButton("±", self)
         ## button power
         self.btnpow = QPushButton("^", self)
         ## button eq
@@ -91,71 +94,85 @@ class Graphics(QWidget):
         ## button delete last num
         self.btn_del_num = QPushButton("", self)
 
-        self.equation.setStyleSheet("color: white; background-color: #888")
-        self.display.setStyleSheet("background-color: silver")
+        color_light = "#666"
+        color_dark = "#333"
 
-        self.setStyleSheet("background-color: #666")
 
-        self.btn1.setStyleSheet("background-color: transparent; font-size: 20px")
-        self.btn2.setStyleSheet("background-color: transparent; font-size: 20px")
-        self.btn3.setStyleSheet("background-color: transparent; font-size: 20px")
-        self.btn4.setStyleSheet("background-color: transparent; font-size: 20px")
-        self.btn5.setStyleSheet("background-color: transparent; font-size: 20px")
-        self.btn6.setStyleSheet("background-color: transparent; font-size: 20px")
-        self.btn7.setStyleSheet("background-color: transparent; font-size: 20px")
-        self.btn8.setStyleSheet("background-color: transparent; font-size: 20px")
-        self.btn9.setStyleSheet("background-color: transparent; font-size: 20px")
-        self.btn0.setStyleSheet("background-color: transparent; font-size: 20px")
-        self.btndot.setStyleSheet("background-color: transparent; font-size: 20px")
+        self.equation.setStyleSheet("color: #222; background-color: #EFEFEF")
+        self.display.setStyleSheet("background-color: #EFEFEF; border-bottom: 1px solid black;")
 
-        self.btnfact.setStyleSheet("background-color: #888; font-size: 20px")
-        self.btnce.setStyleSheet("background-color: #888; font-size: 20px")
-        self.btnadd.setStyleSheet("background-color: #888; font-size: 20px")
-        self.btnsub.setStyleSheet("background-color: #888; font-size: 20px")
-        self.btnmul.setStyleSheet("background-color: #888; font-size: 20px")
-        self.btndiv.setStyleSheet("background-color: #888; font-size: 20px")
-        self.btnLbracket.setStyleSheet("background-color: #888; font-size: 20px")
-        self.btnRbracket.setStyleSheet("background-color: #888; font-size: 20px")
-        self.btnc.setStyleSheet("background-color: #888; font-size: 20px")
-        self.btnabs.setStyleSheet("background-color: #888; font-size: 20px")
-        self.btnsqrt.setStyleSheet("background-color: #888; font-size: 20px")
-        self.btnneg.setStyleSheet("background-color: #888; font-size: 20px")
-        self.btnpow.setStyleSheet("background-color: #888; font-size: 20px")
-        self.btneq.setStyleSheet("background-color: #888; font-size: 20px")
+        self.setStyleSheet("background-color: " + str(color_dark))
+
+        style_numbs = "background-color: transparent; font-size: 20px; color: white"
+        style_func = "background-color: " + str(color_light) + "; font-size: 20px; margin: 0 100 0 100; border: 1"
+        style_eq = "background-color: #2bb62b; font-size: 20px; margin: 0 100 0 100; border: 1"
+
+        self.btn1.setStyleSheet(style_numbs)
+        self.btn2.setStyleSheet(style_numbs)
+        self.btn3.setStyleSheet(style_numbs)
+        self.btn4.setStyleSheet(style_numbs)
+        self.btn5.setStyleSheet(style_numbs)
+        self.btn6.setStyleSheet(style_numbs)
+        self.btn7.setStyleSheet(style_numbs)
+        self.btn8.setStyleSheet(style_numbs)
+        self.btn9.setStyleSheet(style_numbs)
+        self.btn0.setStyleSheet(style_numbs)
+        self.btndot.setStyleSheet(style_numbs)
+        self.btnneg.setStyleSheet(style_numbs)
+
+        self.btnfact.setStyleSheet(style_func)
+        self.btnce.setStyleSheet(style_func)
+        self.btnadd.setStyleSheet(style_func)
+        self.btnsub.setStyleSheet(style_func)
+        self.btnmul.setStyleSheet(style_func)
+        self.btndiv.setStyleSheet(style_func)
+        self.btnLbracket.setStyleSheet(style_func)
+        self.btnRbracket.setStyleSheet(style_func)
+        self.btnc.setStyleSheet(style_func)
+        self.btnabs.setStyleSheet(style_func)
+        self.btnsqrt.setStyleSheet(style_func)
+        self.btnpow.setStyleSheet(style_func)
+
+        self.btneq.setStyleSheet(style_eq)
+
 
         self.equation.move(0, 0)
         self.display.move(0, 30)
-        self.btnce.move(300, 90)
 
-        self.btn1.move(0, 90)
-        self.btn2.move(60, 90)
-        self.btn3.move(120, 90)
-        self.btnadd.move(180, 90)
-        self.btnLbracket.move(240, 90)
-        self.btnc.move(300, 30)
 
-        self.btn4.move(0, 150)
-        self.btn5.move(60, 150)
-        self.btn6.move(120, 150)
-        self.btnsub.move(180, 150)
-        self.btnRbracket.move(240, 150)
-        self.btnabs.move(300, 150)
+        self.btnce.move(0, 90)
+        self.btnc.move(60, 90)
+        self.btnfact.move(120, 90)
+        self.btnLbracket.move(180, 90)
+        self.btnRbracket.move(240, 90)
 
-        self.btn7.move(0, 210)
-        self.btn8.move(60, 210)
-        self.btn9.move(120, 210)
-        self.btnmul.move(180, 210)
-        self.btnsqrt.move(240, 210)
-        self.btnneg.move(300, 210)
+        self.btn1.move(0, 150)
+        self.btn2.move(60, 150)
+        self.btn3.move(120, 150)
+        self.btnadd.move(180, 150)
+        self.btnsqrt.move(240, 150)
 
-        self.btndot.move(0, 270)
-        self.btn0.move(60, 270)
-        self.btnfact.move(120, 270)
-        self.btndiv.move(180, 270)
-        self.btnpow.move(240, 270)
-        self.btneq.move(300, 270)
+        self.btn4.move(0, 210)
+        self.btn5.move(60, 210)
+        self.btn6.move(120, 210)
+        self.btnsub.move(180, 210)
+        self.btnpow.move(240, 210)
 
-        self.equation.setMinimumWidth(360)
+        self.btn7.move(0, 270)
+        self.btn8.move(60, 270)
+        self.btn9.move(120, 270)
+        self.btnmul.move(180, 270)
+        self.btnabs.move(240, 270)
+
+        self.btnneg.move(0, 330)
+        self.btn0.move(60, 330)
+        self.btndot.move(120, 330)
+        self.btndiv.move(180, 330)
+        self.btneq.move(240, 330)
+
+
+
+        self.equation.setMinimumWidth(300)
         self.display.setMinimumWidth(300)
         self.btn1.setMaximumWidth(60)
         self.btn2.setMaximumWidth(60)
@@ -243,7 +260,7 @@ class Graphics(QWidget):
         self.btn_del_num.clicked.connect(self.make_handleButton('del_num'))
 
 
-        self.setFixedSize(360, 330)
+        self.setFixedSize(300, 390)
 
         self.setWindowTitle('Calculator')
 
@@ -254,7 +271,6 @@ class Graphics(QWidget):
     # @brief Watching signal keyPressEvent and simulate click on specific button
     # @param qKeyEvent - signal from keyboard
     def keyPressEvent(self, qKeyEvent):
-
         key = qKeyEvent.key()
         # keys
         if key == QtCore.Qt.Key_0:
@@ -284,6 +300,8 @@ class Graphics(QWidget):
         elif key == QtCore.Qt.Key_Return:
             self.btneq.click()
         elif key == QtCore.Qt.Key_Comma:
+            self.btndot.click()
+        elif key == QtCore.Qt.Key_Period:
             self.btndot.click()
         elif key == QtCore.Qt.Key_Plus:
             self.btnadd.click()
@@ -378,12 +396,10 @@ class Graphics(QWidget):
             self.equation.setText(str(logic.term+str(" ")))
             self.display.setText(str(logic.res))
         return handleButton
-def main():
+
+# startup for app
+if __name__ == '__main__':
     app = QApplication(sys.argv)
     app.setStyle("windows")
     ex = Graphics()
     sys.exit(app.exec_())
-    
-# startup for app
-if __name__ == '__main__':
-    main()
