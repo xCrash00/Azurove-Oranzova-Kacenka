@@ -120,23 +120,6 @@ def ce_pressed():
                     return 0
             term = term[:-1]
 
-
-
-    """
-    if len(term) == 0:  # if there is nothing in term, result is 0
-        return 0
-    if term[-1] == ' ':  #if the string ends with space, remove it
-        term = term[:-1]
-    while term[-1] != ' ':  # as long as the last char isnt space, remove it
-        if len(term) == 1:  #if we have encountered the first char, set term empty
-            term = ''
-            return 0
-        term = term[:-1]
-    if term[-1] == ' ':  #if there still is a space, remove it
-        term = term[:-1]
-    return 0
-    """
-
 ##
 # @brief Function that adds opening parenthesis symbol to global string "term". There will be a space after it.
 # @return 0 if everything goes well
@@ -264,13 +247,11 @@ def get_res(source):
                     simpler[index - 1] = math_lib.fact(float(value))
                     del simpler[index]
                     index -= 1
-                    print(simpler)
                 elif item == 'abs':
                     value = simpler[index - 1]
                     simpler[index - 1] = math_lib.abs(float(value))
                     del simpler[index]
                     index -= 1
-                    print(simpler)
                 else:
                     value1 = source[index + 1]
                     if simpler[index - 1] == '':
@@ -280,7 +261,6 @@ def get_res(source):
                         value2 = simpler[index2 - 1]
                         simpler = simpler[:-2]
                         simpler.append(math_lib.sqrt(float(value1), float(value2)))
-                    print(simpler)
                     skip = True
         simplerer = []
         skip = False
@@ -292,28 +272,20 @@ def get_res(source):
                 skip = False
                 continue
             simplerer.append(item)
-            print(simplerer)
-
             index2 += 1
             if item in op_prio:
                 value1 = simplerer[index2 - 1]
                 value2 = simpler[index + 1]
                 simplerer = simplerer[:-2]
                 index2 -= 1
-                print(simplerer)
-                print(index)
-                print(index2)
                 if item == '*':
                     simplerer.append(math_lib.mul(float(value1), float(value2)))
-                    print(simplerer)
                     skip = True
                 elif item == '^':
                     simplerer.append(math_lib.pow(float(value1), float(value2)))
-                    print(simplerer)
                     skip = True
                 else:
                     simplerer.append(math_lib.div(float(value1), float(value2)))
-                    print(simplerer)
                     skip = True
         simplest = []
         skip1 = False
@@ -333,11 +305,9 @@ def get_res(source):
                 index2 -= 1
                 if item == '+':
                     simplest.append(math_lib.add(float(value1), float(value2)))
-                    print(simplest)
                     skip1 = True
                 elif item == '-':
                     simplest.append(math_lib.sub(float(value1), float(value2)))
-                    print(simplest)
                     skip1 = True
         return simplest[0]
     else:
@@ -384,12 +354,6 @@ def result():
         res = float(term)
         if res.is_integer():
             res = int(res)
-        '''res = term
-        if '.' in term:
-            res = math_lib.add(float(res), float(0))
-            print(res)
-            if float(res) + 5 == 5:
-                res = 0'''
         return res
     elif term == '':
         res = 0
@@ -407,7 +371,10 @@ def result():
             res = int(res)
     return res
 
-def del_num(    ):
+##
+# @brief Function for deleting last digit, operator or Error in global string term.
+# @return 0 if everything goes well
+def del_num():
     global term
     operators = ['+', '-', '*', '/', '√', '!', 'abs', '^', ')', '(']
     numbers = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '0', '.']
@@ -423,14 +390,16 @@ def del_num(    ):
         term = term[:-2]
     elif term[-1] in numbers:
         term = term[:-1]
+    return 0
 
-
+##
+# @brief Function for displaying result stored in global int res in exponencial form.
+# @return res global variable containing result in changed format
 def cut_res():
     global res
     res = str(res)
     velikostokna = 17
     lenght = len(res)
-    print(lenght)
     dotind = -1
     if '.' in str(res):
         dotind = res.index('.')
