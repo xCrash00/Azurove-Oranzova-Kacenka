@@ -11,7 +11,6 @@ setup(
           ]
       },
     package_dir={'': 'zdroj/'},
-    data_files=[
-        ('share/applications/', ['zdroj/ikonka/kalkulacicka.desktop'])
-        ]
+    scripts= ['odinstalace/kalkulacka-odinstall.sh']		
+
 )
