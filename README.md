@@ -2,13 +2,13 @@
 IVS_proj_02
 
 
-Prostredi
+Prostředí
 ---------
 
 Ubuntu 64bit
 
 
-Autori
+Autoři
 ------
 
 Azurově Oranžová Kačenka
