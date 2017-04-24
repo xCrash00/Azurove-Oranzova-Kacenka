@@ -11,6 +11,8 @@ setup(
           ]
       },
     package_dir={'': 'zdroj/'},
-    scripts= ['odinstalace/kalkulacka-odinstall.sh']		
-
+    scripts= ['odinstalace/kalkulacka-odinstall.sh'],		
+    install_requires=[
+            'pip3'
+            'pyqt5'    
 )
