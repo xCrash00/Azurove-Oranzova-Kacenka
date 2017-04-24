@@ -9,6 +9,7 @@ run:
 	kalkulacka
 
 install: ikonka
+	sudo apt install python3-pip	
 	cd instalace && sudo dpkg -i python3-kalkulacka_0-1_all.deb 
 	cd zdroj/ikonka && sudo cp kalkulacicka.desktop /usr/share/applications
 	
