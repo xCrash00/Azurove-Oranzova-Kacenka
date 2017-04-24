@@ -375,7 +375,7 @@ def result():
 # @return 0 if everything goes well
 def del_num():
     global term
-    operators = ['+', '-', '*', '/', '√', '!', 'abs', '^', ')', '(']
+    operators = ['+', '-', '*', '/', '√', '!', '^', ')', '(']
     numbers = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '0', '.']
     length = len(term)
     if length == 0:
@@ -387,6 +387,8 @@ def del_num():
         term = term[:-1]
     if term[-1] in operators:
         term = term[:-2]
+    elif term[-1] == 's' and term[-2] == 'b' and term[-3] == 'a':
+        term = term[:-4]
     elif term[-1] in numbers:
         term = term[:-1]
     return 0
