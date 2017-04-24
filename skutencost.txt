@@ -1,0 +1,21 @@
+Stanovené termíny:
+Dospìli jsme k závìru, že není úplnì vhodné stanovit termíny pøed podrobným prostudováním
+všech oblastí projektu. I pøes to, že vìtšina termínù, byla stanovena správnì, tým
+pracoval pomìrnì nekonzistentnì a k zaèátku práce na úkolu dost èasto docházelo až
+velmi tìsnì pøed termínem. Termín Makefilu nebyl zvolen úplnì správnì, protože bez 
+hotových komponent nešlo otestovat jeho funkènost. Vìtšinu termínù jsme nedodrželi.
+
+Rozdìlení práce:
+Podle plánu.
+
+Komunikace:
+Podle plánu, Ondrovi nevyhovovala komunikace pøes Facebook Messenger, protože se zde
+øešily i vìci, které se pøímo netýkaly jeho oboru práce. To však bylo potøeba, aby 
+mìl pøehled o celkovém stavu projektu. Setkání probíhala velmi èasto, avšak vìtšinou
+se setkali pouze dva èlenové a vedoucí projektu musel fungovat jako prostøedník.
+Facebooková skupina byla naprosto zbyteèná.
+
+Správa verzí:
+Podle plánu. Docházelo k menším komplikacím, které zpùsobily nedohodnuté zásahy
+do souborù, se kterými pracoval nìkdo jiný. Tomu by šlo snadno zabránit, pokud 
+by èlenové týmu mìli více zkušeností s verzovacími systémy.
