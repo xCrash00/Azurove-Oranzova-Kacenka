@@ -8,7 +8,7 @@ test:
 run:
 	kalkulacka
 
-install: #ikonka
+install: 
 	sudo apt install python3-pip	
 	sudo pip3 install PyQt5
 	cd instalace && sudo dpkg -i python3-kalkulacka_0-1_all.deb 
@@ -23,6 +23,3 @@ doc:
 
 clean:
 	rm -r html && rm -r latex
-
-#ikonka:	
-	#cd zdroj/ikonka && sudo cp kalkulacka.png /usr/share/icons/kalkulacka
