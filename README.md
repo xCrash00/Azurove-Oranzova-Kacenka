@@ -20,4 +20,4 @@ Azurově Oranžová Kačenka
 Licence
 -------
 
-Tento program je poskytován pod licencí  GNU GENERAL PUBLIC LICENSEl, Version 3, 29 June 2007.
+Tento program je poskytován pod licencí  GNU GENERAL PUBLIC LICENSE, Version 3, 29 June 2007.
