@@ -396,9 +396,12 @@ class Graphics(QWidget):
             self.display.setText(str(logic.res))
         return handleButton
 
+def main():
+	app = QApplication(sys.argv)
+	app.setStyle("windows")
+	ex = Graphics()
+	sys.exit(app.exec_())
+
 # startup for app
 if __name__ == '__main__':
-    app = QApplication(sys.argv)
-    app.setStyle("windows")
-    ex = Graphics()
-    sys.exit(app.exec_())
+    main()
