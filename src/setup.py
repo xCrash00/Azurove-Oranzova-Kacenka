@@ -14,7 +14,7 @@ setup(
     scripts= ['odinstalace/kalkulacka-odinstall.sh'],		
     install_requires=['PyQt5'],
     data_files=[
-        ('usr/share/applications/', ['zdroj/ikonka/kalkulacicka.desktop']),
-        ('usr/share/icons/',['zdroj/ikonka/kalkulacka.png'])
+        ('share/applications/', ['zdroj/ikonka/kalkulacicka.desktop']),
+        ('share/icons/',['zdroj/ikonka/kalkulacka.png'])
         ]
 )
