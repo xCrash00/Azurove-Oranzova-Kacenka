@@ -14,5 +14,6 @@ setup(
     scripts= ['odinstalace/kalkulacka-odinstall.sh'],		
     install_requires=[
             'pip3'
-            'pyqt5'    
+            'pyqt5'   
+    ]
 )
