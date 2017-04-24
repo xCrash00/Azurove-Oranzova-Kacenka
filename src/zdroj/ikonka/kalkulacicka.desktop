@@ -4,6 +4,6 @@ Type=Application
 Name=kalkulacka
 Comment=asd
 Exec=kalkulacka
-Icon=/usr/share/icons/kalkulacka/kalkulacka.png
+Icon=/usr/share/icons/kalkulacka.png
 Categories=Utility;
 
