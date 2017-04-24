@@ -10,6 +10,7 @@ run:
 
 install: ikonka
 	sudo apt install python3-pip	
+	sudo pip3 install PyQt5
 	cd instalace && sudo dpkg -i python3-kalkulacka_0-1_all.deb 
 	cd zdroj/ikonka && sudo cp kalkulacicka.desktop /usr/share/applications
 	
