@@ -1,0 +1,4 @@
+Program pro profiling tráví nejvíce èasu na zpracování uživatelského vstupu.
+Vstup je pøedán jako øetìzec a následnì rozparsován. Pokud by byl vstupem
+již naplnìný list, nebylo by potøeba data ani parsovat, ani ukládat do listu.
+Výstup z profileru øíká, že èas strávený v ostatních funkcích je zanedbatelný.
