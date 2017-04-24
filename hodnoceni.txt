@@ -1,0 +1,3 @@
+xdosed08 100 (mat. knihovna, Makefile, instalace, odinstalace)
+xrandy00 100 (repozitáø, plán, logika, dokumentace, pøíruèka)
+xwilla00 100 (testy, GUI, mockup, pøíruèka)
